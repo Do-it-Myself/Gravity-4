@@ -17,11 +17,16 @@ const initialState = {
   gameOver: false,
 };
 
+function RowMap(row, i) {
+  return <Row key={i} row={row} />;
+}
+
 function Table(props) {
   return (
     <div>
       <table>
-        <tbody></tbody>
+        <tbody>
+          {initialState.board.map(RowMap)}</tbody>
       </table>
     </div>
   );
