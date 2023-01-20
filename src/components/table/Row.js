@@ -3,6 +3,6 @@ import Cell from "./Cell"
 
 export default function Row() {
   return (
-    <tr></tr>
+    <tr><Cell/></tr>
   )
 }

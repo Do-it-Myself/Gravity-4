@@ -24,6 +24,7 @@ code {
 
 table, tr, th {
   border: 1px solid;
+  color: var(--color-font);
 }
 
 @import "./css/Table.css";

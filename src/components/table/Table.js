@@ -21,7 +21,9 @@ function Table(props) {
   return (
     <div>
       <table>
-        <tbody></tbody>
+        <tbody>
+          <Row />
+        </tbody>
       </table>
     </div>
   );
