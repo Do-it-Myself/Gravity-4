@@ -14,6 +14,12 @@ code {
 
 :root {
   --color-background: #1F1F1F;
+  --color-board: #4F4786;
+  --color-player-1: #F03737;
+  --color-player-2: #4ADE45;
+  --color-button-primary: #EFA00B;
+  --color-button-secondary: #EFB548;
+  --color-font: #FFFFFF;
 }
 
 table, tr, th {
@@ -21,3 +27,6 @@ table, tr, th {
 }
 
 @import "./css/Table.css";
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}

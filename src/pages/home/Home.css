@@ -1,0 +1,27 @@
+.home {
+    height: 100vh;
+}
+
+.game-info {
+    color: var(--color-font);
+    padding-top: 2rem;
+}
+
+.game-info h2 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.game-info p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding-top: 0.25rem;
+}
+
+.player-turn {
+    color: var(--color-font);
+    font-size: 2rem;
+    margin: 2rem 0 0 0;
+}
+
+.player-turn {}
