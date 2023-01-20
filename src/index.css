@@ -15,3 +15,9 @@ code {
 :root {
   --color-background: #1F1F1F;
 }
+
+table, tr, th {
+  border: 1px solid;
+}
+
+@import "./css/Table.css";
