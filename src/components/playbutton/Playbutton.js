@@ -5,9 +5,11 @@ import "./playbutton.css";
 function Playbutton(props) {
     return (
         <div>
-            <button type='button' >
-                <CgArrowsVAlt></CgArrowsVAlt>
-                <p>Play</p>
+            <button className="game-buttons" type='button'>
+                <div className='button-inner'>
+                    <CgArrowsVAlt size={24}/>
+                    <p>Play</p>
+                </div>
             </button>
         </div>
     );
