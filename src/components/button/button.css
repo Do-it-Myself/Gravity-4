@@ -1,0 +1,8 @@
+.flip_button{
+    background-color: var(--color-button-primary);
+    color: var(--color-button-font);
+    border-radius: 150px;
+    font-size: 24px;
+    width: 132px;
+    height: 40px;
+}

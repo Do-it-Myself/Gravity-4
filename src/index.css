@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import "./css/Table.css";
 
 body {
   margin: 0;
@@ -20,6 +21,7 @@ code {
   --color-button-primary: #EFA00B;
   --color-button-secondary: #EFB548;
   --color-font: #FFFFFF;
+  --color-button-font: #000000;
 }
 
 table, tr, th {
