@@ -17,7 +17,6 @@ const initialState = {
     [0, 0, 0, 0, 0, 0, 0],
   ],
   gameOver: false,
-  dispatchTest: true,
 };
 
 function Table() {
@@ -26,6 +25,8 @@ function Table() {
   function reducer(state, action) {
     const newState = state;
     newState.board[action.rowIndex][action.columnIndex] = 1;
+    newState.currentPlayerIs1 = !state.currentPlayerIs1;
+    console.log(newState.currentPlayerIs1);
     return newState;
   }
 
