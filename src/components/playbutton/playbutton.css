@@ -12,6 +12,11 @@
     justify-content: center;
     align-items: center;
     padding: 1rem 1rem;
+    transition: color 50ms;
+}
+
+.button-inner:hover{
+    color: white;
 }
 
 .button-inner p {
