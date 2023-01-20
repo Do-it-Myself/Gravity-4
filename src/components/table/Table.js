@@ -18,7 +18,7 @@ const initialState = {
 };
 
 function RowMap(row, i) {
-  return <Row key={i} row={row} />;
+  return <Row key={i} row={row} rowIndex={i}/>;
 }
 
 function Table(props) {
