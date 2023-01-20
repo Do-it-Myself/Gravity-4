@@ -1,8 +1,10 @@
-import React from 'react'
-import Cell from "./Cell"
+import React from "react";
+import Cell from "./Cell";
 
-export default function Row() {
-  return (
-    <tr></tr>
-  )
+function CellMap(value, i) {
+  return <Cell value={value} key={i} />;
+}
+
+export default function Row({ row }) {
+  return <tr>{row.map(CellMap)}</tr>;
 }
