@@ -20,6 +20,7 @@ code {
   --color-button-primary: #EFA00B;
   --color-button-secondary: #EFB548;
   --color-font: #FFFFFF;
+  --color-button-font: #000000;
 }
 
 table, tr, th {
