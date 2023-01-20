@@ -7,5 +7,5 @@ export default function Cell({ value }) {
   } else if (value === 2) {
     content = 2;
   }
-  return <th>{content}</th>;
+  return <th><button type="button">{content}</button></th>;
 }

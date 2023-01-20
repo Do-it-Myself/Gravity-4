@@ -23,11 +23,11 @@ code {
 }
 
 table, tr, th {
-  border: 1px solid;
   color: var(--color-font);
 }
 
-@import "./css/Table.css";
+@import "./components/table/Table.css";
+
 h1, h2, h3, h4, h5, p {
   margin: 0;
 }
