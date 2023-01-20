@@ -1,5 +1,5 @@
 import React from 'react';
-import './board.css';
+import './Board.css';
 
 function Board(props) {
     return (
@@ -337,21 +337,21 @@ function Board(props) {
                         <td className='cell-6-3 selectable'>
                             <span className='chip-position'>
                                 <svg viewBox='0 0 100 100' className='animated'>
-                                    <circle cx='50' cy='50' r='50' className='circle-red'/>
+                                    <circle cx='50' cy='50' r='50' className='empty-slot'/>
                                 </svg>
                             </span>
                         </td> 
                         <td className='cell-6-4 selectable'>
                             <span className='chip-position'>
                                 <svg viewBox='0 0 100 100' className='animated'>
-                                    <circle cx='50' cy='50' r='50' className='circle-green'/>
+                                    <circle cx='50' cy='50' r='50' className='empty-slot'/>
                                 </svg>
                             </span>
                         </td> 
                         <td className='cell-6-5 selectable'>
                             <span className='chip-position'>
                                 <svg viewBox='0 0 100 100' className='animated'>
-                                    <circle cx='50' cy='50' r='50' className='circle-red'/>
+                                    <circle cx='50' cy='50' r='50' className='empty-slot'/>
                                 </svg>
                             </span>
                         </td> 
