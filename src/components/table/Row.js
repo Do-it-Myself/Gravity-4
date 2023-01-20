@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Cell from "./Cell";
+import {GameContext} from "./Table"
 
-export default function Row({ row, rowIndex, playHandler }) {
-  if (rowIndex === 6) {
-    console.log("Row: ", row);}
+export default function Row({ rowIndex, playHandler }) {
+  const currState = useContext(GameContext);
 
   function CellMap(value, i) {
     return <Cell value={value} key={i} columnIndex={i} rowIndex={rowIndex} playHandler={playHandler} />;
   }
 
-  return <tr>{row.map(CellMap)}</tr>;
+  return <tr>{currState.board[rowIndex].map(CellMap)}</tr>;
 }
