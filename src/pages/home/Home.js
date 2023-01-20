@@ -1,5 +1,7 @@
 import React from 'react';
 import './Home.css';
+import Button from '../components/Button';
+import Table from '../components/Table';
 
 function Home(props) {
     return (
@@ -14,18 +16,14 @@ function Home(props) {
             </div>
             
             
-            <div className=''>
+            <div className='flip-button'>
 
             </div>
 
             <div className='play-button'>
-
+                <Button />
             </div>
         </div>
-        <div className = "button">
-          <Button />
-        </div>
-      </div>
     );
 }
 
