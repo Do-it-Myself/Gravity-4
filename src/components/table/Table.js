@@ -1,7 +1,7 @@
-import React, { useReducer, createContext } from "react";
+import React, { useState, createContext } from "react";
 import Row from "./Row";
 
-const GameContext = createContext()
+const GameContext = createContext();
 
 const initialState = {
   player1: 1,
@@ -20,19 +20,21 @@ const initialState = {
 };
 
 function Table() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  function reducer(state, action) {
-    const newState = state;
-    newState.board[action.rowIndex][action.columnIndex] = 1;
-    newState.currentPlayerIs1 = !state.currentPlayerIs1;
-    console.log(newState.currentPlayerIs1);
-    return newState;
-  }
+  const [state, setState] = useState(initialState);
 
   function playHandler(rowIndex, columnIndex) {
     console.log("Table", rowIndex, columnIndex);
-    dispatch({ rowIndex: rowIndex, columnIndex: columnIndex });
+
+    const newState = state;
+    if (newState.currentPlayerIs1) {
+      newState.board[rowIndex][columnIndex] = 1;
+    } else {
+      newState.board[rowIndex][columnIndex] = 2;
+    }
+    newState.currentPlayerIs1 = !state.currentPlayerIs1;
+    console.log(newState.currentPlayerIs1);
+
+    setState(newState);
   }
 
   function RowMap(row, i) {
@@ -40,11 +42,9 @@ function Table() {
   }
 
   return (
-    <GameContext.Provider value={{state, playHandler}}>
+    <GameContext.Provider value={{ state }}>
       <table>
-        <tbody>
-          {state.board.map(RowMap)}
-        </tbody>
+        <tbody>{state.board.map(RowMap)}</tbody>
       </table>
     </GameContext.Provider>
   );
@@ -52,4 +52,4 @@ function Table() {
 
 export default Table;
 
-export {GameContext};
+export { GameContext };

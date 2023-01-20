@@ -6,8 +6,13 @@ export default function Cell({ rowIndex, columnIndex, playHandler }) {
   const [value, setValue] = useState(currState.board[rowIndex][columnIndex]);
 
   function clickHandler() {
+    if (currState.currentPlayerIs1) {
+      setValue(1);
+    } else {
+      setValue(2);
+    }
     playHandler(rowIndex, columnIndex);
-    setValue(1);
+
     console.log(currState.board);
   }
 
