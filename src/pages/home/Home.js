@@ -20,13 +20,9 @@ function Home(props) {
             <div className='flip-button'>
 
             </div>
-
-<<<<<<< HEAD
             <div className='play-button'>
                 <Button />
             </div>
-=======
-        <div className="play-button">
-          <Button />
+        </div>
 
 export default Home;
