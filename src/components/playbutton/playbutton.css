@@ -1,7 +1,21 @@
-button {
+.game-buttons {
     border-radius: 15px;
+    border: none;
     background-color: var(--color-button-primary);
+    height: 40px;
+    width: 130px;
+}
+
+.button-inner {
+    transform: translateX(-2.5px);
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    padding: auto auto;
+}
+
+.button-inner p {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
