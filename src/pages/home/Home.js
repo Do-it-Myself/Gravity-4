@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import Button from "../../components/button/Button";
 import Table from "../../components/table/Table";
+import Playbutton from "../../components/playbutton/Playbutton";
 
 function Home(props) {
   return (
@@ -22,6 +23,7 @@ function Home(props) {
 
         <div className="play-button">
           <Button />
+          <Playbutton/>
         </div>
       </div>
     </div>
