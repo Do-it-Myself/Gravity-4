@@ -1,3 +1,33 @@
+.board-container {
+    width: 100%;
+    display: flex;
+    padding: 2rem 0;
+    justify-content: center;
+}
+
 table {
+    overflow: hidden;
+    border-radius: 15px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#connect4 table td {
     background-color: var(--color-board);
+    padding: 0.5rem;
+    text-align: center;
+    height: 2rem;
+    width: 2rem;
+}
+
+.chip-position {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.circle-red {
+    background-color: var(--color-player-1);
+    z-index: 999;
 }
