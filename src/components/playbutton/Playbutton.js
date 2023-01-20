@@ -1,5 +1,4 @@
 import React from 'react';
-import {CgArrowsVAlt} from "react-icons/cg";
 import "./playbutton.css";
 
 function Playbutton(props) {
@@ -8,7 +7,7 @@ function Playbutton(props) {
             <button className="game-buttons" type='button'>
                 <div className='button-inner'>
                     {props.icon}
-                    <p>{props.description}</p>
+                    <p>{props.button_text}</p>
                 </div>
             </button>
         </div>
