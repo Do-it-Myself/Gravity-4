@@ -2,24 +2,18 @@ import React, { useState, useContext } from "react";
 import { GameContext } from "./Table";
 
 export default function Cell({ rowIndex, columnIndex, playHandler }) {
-  const currState = useContext(GameContext).state;
-  const [value, setValue] = useState(currState.board[rowIndex][columnIndex]);
+  const currState = useContext(GameContext);
+  const [value, setValue] = useState(0);
 
   function clickHandler() {
-    if (currState.currentPlayerIs1) {
-      setValue(1);
-    } else {
-      setValue(2);
-    }
     playHandler(rowIndex, columnIndex);
-
-    console.log(currState.board);
+    setValue(currState);
   }
 
   return (
     <th>
       <button type="button" onClick={clickHandler}>
-        {value}
+        {currState.board[rowIndex][columnIndex]}
       </button>
     </th>
   );

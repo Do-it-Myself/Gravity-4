@@ -32,7 +32,6 @@ function Table() {
       newState.board[rowIndex][columnIndex] = 2;
     }
     newState.currentPlayerIs1 = !state.currentPlayerIs1;
-    console.log(newState.currentPlayerIs1);
 
     setState(newState);
   }
@@ -42,7 +41,7 @@ function Table() {
   }
 
   return (
-    <GameContext.Provider value={{ state }}>
+    <GameContext.Provider value={state}>
       <table>
         <tbody>{state.board.map(RowMap)}</tbody>
       </table>
