@@ -3,9 +3,15 @@ import './Home.css';
 
 function Home(props) {
     return (
-        <div className='test'>
-            <h1>Gravity 4</h1>
+      <div className = "main page">
+        <h1>Gravity 4</h1>
+        <div className = "table">
+          <Table />
         </div>
+        <div className = "button">
+          <Button />
+        </div>
+      </div>
     );
 }
 
