@@ -17,16 +17,13 @@ function Home(props) {
                 <h4>{props.player} turn</h4>
             </div>
             
-<<<<<<< HEAD
 
-=======
             <button 
             type = "button"
             className = "flip_button"
             onClick={() => console.log("Placeholder for button action")}>
                  Flip!
             </button>
->>>>>>> 6e6a5797781a125b79c5bc5c4e21169f409c09aa
             <div className='flip-button'>
 
             </div>
@@ -34,13 +31,8 @@ function Home(props) {
               <Playbutton description="dasdsda"/>
                 <Playbutton icon={<CgArrowsVAlt size={24}/>} description="diu"/>
             </div>
-<<<<<<< HEAD
         </div>
     )
 }
-=======
-        </div>)
-}
 
->>>>>>> 6e6a5797781a125b79c5bc5c4e21169f409c09aa
 export default Home;
