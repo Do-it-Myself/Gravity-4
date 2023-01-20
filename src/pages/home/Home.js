@@ -4,13 +4,22 @@ import Table from "../../components/table/Table";
 import Playbutton from "../../components/playbutton/Playbutton";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
+import Switch from "../../components/switch/Switch"
 
 function Home(props) {
     return (
         <div className='home'>
+            <div className = "darkmode-toggle">
+                <Switch />
+            </div>
+
             <div className='game-info'>
                 <h2>Gravity 4</h2>
                 <p>A twist on the classic Connect 4</p>
+            </div>
+
+            <div className = "table">
+                <Table />
             </div>
 
             <div className='player-turn'>
