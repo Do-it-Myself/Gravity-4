@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { GameContext } from "./Table";
 
-export default function Cell({ value, rowIndex, columnIndex, playHandler }) {
-  let content = 0;
-  if (value === 1) {
-    content = 1;
-    console.log(rowIndex, columnIndex, 1);
-  } else if (value === 2) {
-    content = 2;
-    console.log(rowIndex, columnIndex, 2);
-  }
-  
-  if (rowIndex === 6) {
-    console.log("Cell: ", columnIndex, value);}
+export default function Cell({ rowIndex, columnIndex, playHandler }) {
+  const currState = useContext(GameContext).state;
+  const [value, setValue] = useState(currState.board[rowIndex][columnIndex]);
 
   function clickHandler() {
     playHandler(rowIndex, columnIndex);
+    setValue(1);
+    console.log(currState.board);
   }
 
-  return <th><button type="button" onClick={clickHandler}>{content}</button></th>;
+  return (
+    <th>
+      <button type="button" onClick={clickHandler}>
+        {value}
+      </button>
+    </th>
+  );
 }

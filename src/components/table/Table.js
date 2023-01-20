@@ -1,20 +1,20 @@
 import React, { useReducer, createContext } from "react";
 import Row from "./Row";
 
-const UserContext = createContext()
+const GameContext = createContext()
 
 const initialState = {
   player1: 1,
   player2: 2,
-  currentPlayer: 1,
+  currentPlayerIs1: true,
   board: [
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
   ],
   gameOver: false,
   dispatchTest: true,
@@ -39,14 +39,16 @@ function Table() {
   }
 
   return (
-    <UserContext.Provider>
+    <GameContext.Provider value={{state, playHandler}}>
       <table>
         <tbody>
           {state.board.map(RowMap)}
         </tbody>
       </table>
-    </UserContext.Provider>
+    </GameContext.Provider>
   );
 }
 
 export default Table;
+
+export {GameContext};
