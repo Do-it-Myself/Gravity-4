@@ -1,5 +1,7 @@
-import React, { useReducer } from "react";
+import React, { useReducer, createContext } from "react";
 import Row from "./Row";
+
+const UserContext = createContext()
 
 const initialState = {
   player1: 1,
@@ -15,20 +17,35 @@ const initialState = {
     [null, null, null, null, null, null, null],
   ],
   gameOver: false,
+  dispatchTest: true,
 };
 
-function RowMap(row, i) {
-  return <Row key={i} row={row} rowIndex={i}/>;
-}
+function Table() {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-function Table(props) {
+  function reducer(state, action) {
+    const newState = state;
+    newState.board[action.rowIndex][action.columnIndex] = 1;
+    return newState;
+  }
+
+  function playHandler(rowIndex, columnIndex) {
+    console.log("Table", rowIndex, columnIndex);
+    dispatch({ rowIndex: rowIndex, columnIndex: columnIndex });
+  }
+
+  function RowMap(row, i) {
+    return <Row key={i} row={row} rowIndex={i} playHandler={playHandler} />;
+  }
+
   return (
-    <div>
+    <UserContext.Provider>
       <table>
         <tbody>
-          {initialState.board.map(RowMap)}</tbody>
+          {state.board.map(RowMap)}
+        </tbody>
       </table>
-    </div>
+    </UserContext.Provider>
   );
 }
 
