@@ -1,7 +1,8 @@
-import React from 'react';
-import './Home.css';
-import Button from '../../components/button/Button';
-import Table from '../../components/table/Table';
+import React from "react";
+import "./Home.css";
+import Button from "../../components/button/Button";
+import Table from "../../components/table/Table";
+import Playbutton from "../../components/playbutton/Playbutton";
 
 function Home(props) {
     return (
@@ -20,11 +21,12 @@ function Home(props) {
 
             </div>
 
+<<<<<<< HEAD
             <div className='play-button'>
                 <Button />
             </div>
-        </div>
-    );
-}
+=======
+        <div className="play-button">
+          <Button />
 
 export default Home;
