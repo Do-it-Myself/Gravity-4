@@ -1,10 +1,13 @@
 import React from "react";
 import Cell from "./Cell";
 
-function CellMap(value, i) {
-  return <Cell value={value} key={i} />;
-}
+export default function Row({ row, rowIndex, playHandler }) {
+  if (rowIndex === 6) {
+    console.log("Row: ", row);}
 
-export default function Row({ row }) {
+  function CellMap(value, i) {
+    return <Cell value={value} key={i} columnIndex={i} rowIndex={rowIndex} playHandler={playHandler} />;
+  }
+
   return <tr>{row.map(CellMap)}</tr>;
 }
