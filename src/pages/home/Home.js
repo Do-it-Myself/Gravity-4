@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
-import Button from '../components/Button';
-import Table from '../components/Table';
+import Button from '../../components/button/Button';
+import Table from '../../components/table/Table';
 
 function Home(props) {
     return (
