@@ -7,8 +7,8 @@ function Playbutton(props) {
         <div>
             <button className="game-buttons" type='button'>
                 <div className='button-inner'>
-                    <CgArrowsVAlt size={24}/>
-                    <p>Play</p>
+                    {props.icon}
+                    <p>{props.description}</p>
                 </div>
             </button>
         </div>

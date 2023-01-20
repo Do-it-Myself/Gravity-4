@@ -3,6 +3,7 @@ import "./Home.css";
 import Button from "../../components/button/Button";
 import Table from "../../components/table/Table";
 import Playbutton from "../../components/playbutton/Playbutton";
+import {CgArrowsVAlt} from "react-icons/cg";
 
 function Home(props) {
     return (
@@ -16,13 +17,15 @@ function Home(props) {
                 <h4>{props.player} turn</h4>
             </div>
             
-            
+
             <div className='flip-button'>
 
             </div>
             <div className='play-button'>
-                <Button />
+              <Playbutton description="dasdsda"/>
+                <Playbutton icon={<CgArrowsVAlt size={24}/>} description="diu"/>
             </div>
         </div>
-
+    )
+}
 export default Home;
