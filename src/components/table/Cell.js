@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export default function Cell({value}) {
-  return (
-    <th>Hi</th>
-  )
+export default function Cell({ value }) {
+  let content = 0;
+  if (value === 1) {
+    content = 1;
+  } else if (value === 2) {
+    content = 2;
+  }
+  return <th>{content}</th>;
 }
