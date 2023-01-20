@@ -19,5 +19,14 @@ code {
   --color-player-2: #4ADE45;
   --color-button-primary: #EFA00B;
   --color-button-secondary: #EFB548;
+  --color-font: #FFFFFF;
+}
 
+table, tr, th {
+  border: 1px solid;
+}
+
+@import "./css/Table.css";
+h1, h2, h3, h4, h5, p {
+  margin: 0;
 }
