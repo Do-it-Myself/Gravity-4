@@ -8,7 +8,8 @@ function Button(props) {
             <button 
             type = "button"
             className = "flip_button"
-            onClick={() => console.log("Placeholder for button action")}>
+            onClick={() => console.log("Placeholder for button action")}
+            >
                 <CgArrowsVAlt /> Flip!
             </button>
         </div>

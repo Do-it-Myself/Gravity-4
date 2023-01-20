@@ -16,13 +16,19 @@ function Home(props) {
                 <h4>{props.player} turn</h4>
             </div>
             
-            
+            <button 
+            type = "button"
+            className = "flip_button"
+            onClick={() => console.log("Placeholder for button action")}>
+                 Flip!
+            </button>
             <div className='flip-button'>
 
             </div>
             <div className='play-button'>
                 <Button />
             </div>
-        </div>
+        </div>)
+}
 
 export default Home;
