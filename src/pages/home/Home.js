@@ -22,6 +22,10 @@ function Home(props) {
 
             </div>
         </div>
+        <div className = "button">
+          <Button />
+        </div>
+      </div>
     );
 }
 
