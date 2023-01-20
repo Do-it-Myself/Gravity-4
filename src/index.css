@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
-@import "./css/Table.css";
 
 body {
   margin: 0;
@@ -25,9 +24,10 @@ code {
 }
 
 table, tr, th {
-  border: 1px solid;
   color: var(--color-font);
 }
+
+@import "./components/table/Table.css";
 
 h1, h2, h3, h4, h5, p {
   margin: 0;
