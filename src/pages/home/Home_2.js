@@ -250,10 +250,10 @@ function Home() {
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
       if (playerwin[0] > playerwin[1]) {
         state.gameOver = true;
-        state.winner = "Red Wins";
+        state.winner = "Red wins";
       } else if (playerwin[0] < playerwin[1]) {
         state.gameOver = true;
-        state.winner = "Green Wins";
+        state.winner = "Green wins";
       } else {
         state.gameOver = true;
         state.winner = "Draw";
@@ -269,46 +269,44 @@ function Home() {
 
   // Play
   function playHandler(rowIndex, columnIndex) {
-    console.log("Table", rowIndex, columnIndex, "State flipped", state.flipped);
+    if (!state.gameOver) {
+      const column = state.board.map((x) => x[columnIndex]);
+      if (state.flipped) {
+        for (let i = 0; i < 7; i++) {
+          if (column[i] === 0) {
+            if (state.currentPlayerIs1) {
+              state.board[i][columnIndex] = 1;
+              cellMatrix[i][columnIndex] = "circle-red";
+            } else {
+              state.board[i][columnIndex] = 2;
+              cellMatrix[i][columnIndex] = "circle-green";
+            }
+            state.currentPlayerIs1 = !state.currentPlayerIs1;
+            setState({ ...state });
+            setCellMatrix({ ...cellMatrix });
 
-    const column = state.board.map((x) => x[columnIndex]);
-    if (state.flipped) {
-      for (let i = 0; i < 7; i++) {
-        if (column[i] === 0) {
-          if (state.currentPlayerIs1) {
-            state.board[i][columnIndex] = 1;
-            cellMatrix[i][columnIndex] = "circle-red";
-          } else {
-            state.board[i][columnIndex] = 2;
-            cellMatrix[i][columnIndex] = "circle-green";
+            break;
           }
-          state.currentPlayerIs1 = !state.currentPlayerIs1;
-          setState({ ...state });
-          setCellMatrix({ ...cellMatrix });
-
-          break;
+        }
+      } else {
+        for (let i = 6; i >= 0; i--) {
+          if (column[i] === 0) {
+            if (state.currentPlayerIs1) {
+              state.board[i][columnIndex] = 1;
+              cellMatrix[i][columnIndex] = "circle-red";
+            } else {
+              state.board[i][columnIndex] = 2;
+              cellMatrix[i][columnIndex] = "circle-green";
+            }
+            state.currentPlayerIs1 = !state.currentPlayerIs1;
+            setState({ ...state });
+            setCellMatrix({ ...cellMatrix });
+            break;
+          }
         }
       }
-    } else {
-      for (let i = 6; i >= 0; i--) {
-        if (column[i] === 0) {
-          if (state.currentPlayerIs1) {
-            state.board[i][columnIndex] = 1;
-            cellMatrix[i][columnIndex] = "circle-red";
-          } else {
-            state.board[i][columnIndex] = 2;
-            cellMatrix[i][columnIndex] = "circle-green";
-          }
-          state.currentPlayerIs1 = !state.currentPlayerIs1;
-          setState({ ...state });
-          setCellMatrix({ ...cellMatrix });
-          break;
-        }
-      }
+      checkWinner(state.board);
     }
-    checkWinner(state.board);
-
-    console.log("Init", initialState.board);
   }
 
   // Theme
@@ -384,10 +382,10 @@ function Home() {
         <div className="flip-button">
           {state.gameOver ? (
             <Playbutton
-            icon={<GiAlliedStar size={24} />}
-            button_text="Play Again"
-            function={reset}
-          />
+              icon={<GiAlliedStar size={24} />}
+              button_text="Play Again"
+              function={reset}
+            />
           ) : (
             <Playbutton
               icon={<CgArrowsVAlt size={24} />}
