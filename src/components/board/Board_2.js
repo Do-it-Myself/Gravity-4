@@ -30,9 +30,6 @@ function Board() {
                       className={`${cellMatrix[0][0]} ${cellMatrix[0][0]}-${theme}`}
                     />
                   </svg>
-                  <div className="win-cross">
-                    <ImCross size={20}/>
-                  </div>
                 </span>
               </td>
               <td
