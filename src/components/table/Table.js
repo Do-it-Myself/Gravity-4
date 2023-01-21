@@ -17,6 +17,7 @@ const initialState = {
     [0, 0, 0, 0, 0, 0, 0],
   ],
   gameOver: false,
+  winner: null,
 };
 
 function Horizontal(matrix, player1win, player2win) {
@@ -75,10 +76,8 @@ function RightDown(matrix, player1win, player2win) {
   for (let r = 0; r < 7; r++) {
     for (let c = 0; c < 7; c++) {
       if (r + 4 > 7 || c + 4 > 7) {
-        console.log("Cell break:", r, c)
         break;
       } else if (matrix[r][c] === 1) {
-        console.log("Cell:", r, c)
         if (
           matrix[r + 1][c + 1] === 1 &&
           matrix[r + 2][c + 2] === 1 &&
@@ -97,55 +96,83 @@ function RightDown(matrix, player1win, player2win) {
       }
     }
   }
-  console.log([player1win, player2win])
   return [player1win, player2win];
 }
 
 function LeftDown(matrix, player1win, player2win) {
-  
-}
-
-function checkWinner(matrix) {
-  let playerwin = [0, 0];
-  playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
-  playerwin = Vertical(matrix, playerwin[0], playerwin[1]);
-  playerwin = RightDown(matrix, playerwin[0], playerwin[1])
-
-  if (playerwin[0] !== 0 || playerwin[1] !== 0) {
-    if (playerwin[0] > playerwin[1]) {
-      console.log("1 win");
-    } else if (playerwin[0] < playerwin[1]) {
-      console.log("2 win");
-    } else {
-      console.log("Draw");
+  for (let r = 0; r < 7; r++) {
+    for (let c = 6; c >= 0; c--) {
+      if (r + 4 > 7 || c < 3) {
+        break;
+      } else if (matrix[r][c] === 1) {
+        if (
+          matrix[r + 1][c - 1] === 1 &&
+          matrix[r + 2][c - 2] === 1 &&
+          matrix[r + 3][c - 3] === 1
+        ) {
+          player1win += 1;
+        }
+      } else if (matrix[r][c] === 2) {
+        if (
+          matrix[r + 1][c - 1] === 2 &&
+          matrix[r + 2][c - 2] === 2 &&
+          matrix[r + 3][c - 3] === 2
+        ) {
+          player1win += 2;
+        }
+      }
     }
   }
+  console.log([player1win, player2win]);
+  return [player1win, player2win];
 }
 
 function Table() {
   const [state, setState] = useState(initialState);
 
+  function checkWinner(matrix) {
+    let playerwin = [0, 0];
+    playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
+    playerwin = Vertical(matrix, playerwin[0], playerwin[1]);
+    playerwin = RightDown(matrix, playerwin[0], playerwin[1]);
+    playerwin = LeftDown(matrix, playerwin[0], playerwin[1]);
+
+    if (playerwin[0] !== 0 || playerwin[1] !== 0) {
+      if (playerwin[0] > playerwin[1]) {
+        console.log("1 win");
+        state.gameOver = true;
+        state.winner = 1;
+      } else if (playerwin[0] < playerwin[1]) {
+        console.log("2 win");
+        state.gameOver = true;
+        state.winner = 2;
+      } else {
+        console.log("Draw");
+        state.gameOver = true;
+        state.winner = 0;
+      }
+      setState({ ...state });
+      console.log(state.gameOver, state.winner)
+    }
+  }
+
   function playHandler(rowIndex, columnIndex) {
     console.log("Table", rowIndex, columnIndex);
 
-    state.board[rowIndex][columnIndex] = 1;
-    /*
     const column = state.board.map((x) => x[columnIndex]);
     for (let i = 6; i >= 0; i--) {
       if (column[i] === 0) {
-        const newState = state;
-        if (newState.currentPlayerIs1) {
-          newState.board[i][columnIndex] = 1;
+        if (state.currentPlayerIs1) {
+          state.board[i][columnIndex] = 1;
         } else {
-          newState.board[i][columnIndex] = 2;
+          state.board[i][columnIndex] = 2;
         }
-        newState.currentPlayerIs1 = !state.currentPlayerIs1;
-        setState({...newState});
+        state.currentPlayerIs1 = !state.currentPlayerIs1;
+        setState({ ...state });
 
         break;
       }
     }
-    */
 
     console.log(state.board, state.currentPlayerIs1);
     checkWinner(state.board);
