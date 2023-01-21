@@ -8,6 +8,8 @@ import { GiAlliedStar } from "react-icons/gi";
 import {BsFillQuestionCircleFill} from "react-icons/bs";
 import Switch from "../../components/switch/Switch";
 import Board from "../../components/board/Board_2";
+import astronaut_green from '../../assets/green_astronaut.png';
+import astronaut_red from '../../assets/red_astronaut.png';
 
 console.log("board 2");
 
@@ -344,6 +346,9 @@ function Home(props) {
         <div className="end">
           <Endmodal />
         </div>
+
+        <div className="astronaut astronaut-red"><img src={astronaut_red}></img></div>
+            <div className="astronaut astronaut-green"><img src={astronaut_green}></img></div>
       </div>
     </GameContext.Provider>
   );
