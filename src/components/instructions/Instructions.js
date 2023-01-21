@@ -19,7 +19,7 @@ function Instructions(props) {
                             <ul>
                                 <li>Same as Connect 4, the objective is to connect 4 tokens either horizontally, vertically, or diagonally.</li>
                                 <li>But in Gravity 4, you can choose to flip the board instead of placing a token for your turn.</li>
-                                <li>Enjoy the game and experience a whole new dimension!</li>
+                                <li>Hope your brain doesn't flip upside down playing Gravity 4!</li>
                             </ul>
                         </div>
                     </div>
