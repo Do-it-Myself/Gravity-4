@@ -4,13 +4,13 @@ import {IoCloseSharp} from 'react-icons/io5';
 
 
 function Instructions(props) {
-    const[closeModal, setCloseModal] = useState(true);
 
+    console.log(props.closeModal);
     return (
         <div>
-            {closeModal && (
-                <div className='instructions-popup'>
-                    <button onClick={() => setCloseModal(false)} className='close-button'>
+            {props.closeModal && (
+                <div className={`instructions-popup-${props.theme} instructions-popup`}>
+                    <button onClick={() => props.setCloseModal(false)} className='close-button'>
                         <IoCloseSharp size={24}/>
                     </button>
                     <div className='instructions-text'>
@@ -19,7 +19,7 @@ function Instructions(props) {
                             <ul>
                                 <li>Same as Connect 4, the objective is to connect 4 tokens either horizontally, vertically, or diagonally.</li>
                                 <li>But in Gravity 4, you can choose to flip the board instead of placing a token for your turn.</li>
-                                <li>Enjoy the game and experience a whole new dimension!</li>
+                                <li>Hope your brain doesn't flip upside down playing Gravity 4!</li>
                             </ul>
                         </div>
                     </div>

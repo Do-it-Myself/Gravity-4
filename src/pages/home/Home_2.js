@@ -301,10 +301,13 @@ function Home() {
       state.gameOver = true;
       glow(playerwin[2]);
       if (playerwin[0] > playerwin[1]) {
+        state.gameOver = true;
         state.winner = "Red wins";
       } else if (playerwin[0] < playerwin[1]) {
+        state.gameOver = true;
         state.winner = "Green wins";
       } else {
+        state.gameOver = true;
         state.winner = "Draw";
       }
 
@@ -405,6 +408,8 @@ function Home() {
     ]);
     console.log("reset");
   }
+  //Modal
+  const[closeModal, setCloseModal] = useState(true);
 
   return (
     <GameContext.Provider
@@ -449,11 +454,16 @@ function Home() {
         </div>
 
         <div className="instructions">
-          <Instructions />
+          <Instructions 
+          theme = {theme}
+          closeModal = {closeModal}
+          setCloseModal = {setCloseModal} />
         </div>
 
+        
         <div className="how-to-play">
-          <button className="how-to-play-button">
+          <button className="how-to-play-button"
+          onClick = {() => {setCloseModal(true)}}>
             <span>
               <BsQuestionCircleFill
                 size={24}
