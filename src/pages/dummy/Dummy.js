@@ -9,8 +9,8 @@ import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import {BsFillQuestionCircleFill} from "react-icons/bs";
 
-import astronaut_green from '../../assets/astronaut_green_alt.png';
-import astronaut_red from '../../assets/astronaut_red.png';
+import astronaut_green from '../../assets/green_astronaut.png';
+import astronaut_red from '../../assets/red_astronaut.png';
 
 function Dummy(props) {
     const [flipped, setFlipped] = useState("flipped_true");
