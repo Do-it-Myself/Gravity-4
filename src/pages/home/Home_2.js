@@ -287,13 +287,7 @@ function Home() {
         state.winner = "Green wins";
       } else {
         state.winner = "Draw";
-      }
-
-      for (let z=0; z<4; z++){
-        let row, col = arr[z];
-        cellMatrix[row][col] = "win" 
-      }
-      
+      }      
 
       setState({ ...state });
       console.log(state.gameOver, state.winner);
