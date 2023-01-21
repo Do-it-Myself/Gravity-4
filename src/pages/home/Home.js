@@ -12,12 +12,12 @@ import Board from "../../components/board/Board";
 
 
 function Home(props) {
-    const [flipped, setFlipped] = useState("flipped_true");
+    const [flipped, setFlipped] = useState(false);
     const flip_board = () => {
-        if (flipped === "flipped_false"){
-            setFlipped("flipped_true");
+        if (flipped === false){
+            setFlipped(true);
         } else {
-            setFlipped("flipped_false");
+            setFlipped(false);
         }
     }
 
@@ -42,19 +42,19 @@ function Home(props) {
                 <Switch />
             </div>
 
-            <div className='game-info'>
+            <div className={`game-info-${theme}`}>
                 <h2>Gravity 4</h2>
                 <p>A twist on the classic Connect 4</p>
             </div>
 
-            <div className ={flipped}>
+            <div className={`player-turn-${theme}`}>
+                <h4>{props.player} turn</h4>
+            </div>
+
+            <div className ={`flipped-${flipped}`}>
                 <Board />
             </div>
 
-            <div className='player-turn'>
-                <h4>{props.player} turn</h4>
-            </div>
-            
             <div className='flip-button'>
                 <Playbutton 
                 icon={<CgArrowsVAlt size={24}/>} 
