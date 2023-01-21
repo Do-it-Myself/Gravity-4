@@ -36,13 +36,13 @@
 .player-turn-dark {
     color: var(--color-font);
     font-size: 2rem;
-    margin: 2rem 0 0 0;
+    margin: 1.25rem 0 0 0;
 }
 
 .player-turn-light {
     color: var(--color-font-light);
     font-size: 2rem;
-    margin: 2rem 0 0 0;
+    margin: 1.25rem 0 0 0;
 }
 
 .flipped-true{
