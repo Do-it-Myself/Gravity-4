@@ -6,6 +6,7 @@ import Instructions from "../../components/instructions/Instructions";
 import Endmodal from "../../components/endmodal/Endmodal";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
+import {BsFillQuestionCircleFill} from "react-icons/bs";
 import Switch from "../../components/switch/Switch"
 import "./Darkmode.css"
 import Board from "../../components/board/Board";
@@ -73,7 +74,7 @@ function Home(props) {
             </div>
 
             <div className="how-to-play">
-                <button className="how-to-play-button"></button>
+                <button className="how-to-play-button"><span><BsFillQuestionCircleFill size={24}/></span></button>
             </div>
 
             <div className="end">
