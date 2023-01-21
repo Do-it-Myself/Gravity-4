@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import './Board.css';
+import './board.css';
 
 const initialState = {
   player1: 1,
@@ -48,8 +48,8 @@ function Board(props) {
         }
         newState.currentPlayerIs1 = !state.currentPlayerIs1;
     
-        setState(newState);
-        setCellMatrix(newCellMatrix);
+        setState({...newState});
+        setCellMatrix({...newCellMatrix});
         console.log("matrix", cellMatrix);
     }
 

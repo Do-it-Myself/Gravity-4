@@ -4,7 +4,7 @@ import "./playbutton.css";
 function Playbutton(props) {
     return (
         <div>
-            <button className="game-buttons" type='button'>
+            <button className="game-buttons">
                 <div className='button-inner'>
                     {props.icon}
                     <p>{props.button_text}</p>

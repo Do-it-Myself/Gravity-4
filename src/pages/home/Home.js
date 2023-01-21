@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Table from "../../components/table/Table";
 import Playbutton from "../../components/playbutton/Playbutton";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import Switch from "../../components/switch/Switch"
+import "./Darkmode.css"
 
 function Home(props) {
+    const [theme, setTheme] = useState("light");
+    const toggle_theme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    };
+    useEffect(() => {document.body.className = theme;}, [theme]);
+
     return (
         <div className='home'>
+            
+            <div ClassName = "test">
+                <button onClick = {toggle_theme}>Toggle Theme</button>
+            </div>
+
             <div className = "darkmode-toggle">
                 <Switch />
             </div>
