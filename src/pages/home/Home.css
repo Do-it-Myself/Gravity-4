@@ -1,5 +1,26 @@
 .home {
     height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+.home-dark {
+    background-color: var(--color-background);
+}
+
+.home-light {
+    background-color: var(--color-background-light);
+}
+
+.game-info h2 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.game-info p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding-top: 0.25rem;
 }
 
 .game-info-dark {
@@ -7,31 +28,9 @@
     padding-top: 2rem;
 }
 
-.game-info-dark h2 {
-    font-size: 5rem;
-    font-weight: bold;
-}
-
-.game-info-dark p {
-    font-size: 1.25rem;
-    font-weight: 400;
-    padding-top: 0.25rem;
-}
-
 .game-info-light {
     color: var(--color-font-light);
     padding-top: 2rem;
-}
-
-.game-info-light h2 {
-    font-size: 5rem;
-    font-weight: bold;
-}
-
-.game-info-light p {
-    font-size: 1.25rem;
-    font-weight: 400;
-    padding-top: 0.25rem;
 }
 
 .player-turn-dark {
@@ -72,4 +71,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.darkmode-toggle{
+    align-items: flex-end;
 }

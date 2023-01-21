@@ -8,6 +8,7 @@ function Switch(props){
             <label class="switch">
             <input 
             type="checkbox"
+            onClick = {() => {props.function()}}
              />
             <span class="slider round"></span>
             </label>
