@@ -168,7 +168,7 @@ function LeftDown(matrix, player1win, player2win, winSet) {
           matrix[r + 2][c - 2] === 2 &&
           matrix[r + 3][c - 3] === 2
         ) {
-          player1win += 2;
+          player2win += 2;
           for (let i = 0; i < 4; i++) {
             const r_idx = (r + i).toString();
             const c_idx = (c - i).toString();
