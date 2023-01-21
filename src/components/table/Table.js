@@ -140,20 +140,17 @@ function Table() {
 
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
       if (playerwin[0] > playerwin[1]) {
-        console.log("1 win");
         state.gameOver = true;
         state.winner = 1;
       } else if (playerwin[0] < playerwin[1]) {
-        console.log("2 win");
         state.gameOver = true;
         state.winner = 2;
       } else {
-        console.log("Draw");
         state.gameOver = true;
         state.winner = 0;
       }
       setState({ ...state });
-      console.log(state.gameOver, state.winner);
+      console.log("Winner", state.gameOver, state.winner);
     }
   }
 
@@ -179,6 +176,7 @@ function Table() {
     }
     state.flipped = true;
     setState({ ...state });
+    checkWinner(state.board);
   }
 
   function unflip() {
@@ -186,7 +184,7 @@ function Table() {
       const column = state.board.map((x) => x[c]);
       let lastFilled = -1;
       for (let r = 6; r >= 0; r--) {
-        if (column[r] != 0) {
+        if (column[r] !== 0) {
           lastFilled = r;
           break;
         }
@@ -203,6 +201,7 @@ function Table() {
       }
       state.flipped = false;
       setState({ ...state });
+      checkWinner(state.board);
     }
   }
 
@@ -249,7 +248,14 @@ function Table() {
   }
 
   function RowMap(row, i) {
-    return <Row key={i} row={row} rowIndex={i} playHandler={state.flipped? playHandlerFlipped : playHandler} />;
+    return (
+      <Row
+        key={i}
+        row={row}
+        rowIndex={i}
+        playHandler={state.flipped ? playHandlerFlipped : playHandler}
+      />
+    );
   }
 
   return (
@@ -257,7 +263,7 @@ function Table() {
       <table>
         <tbody>{state.board.map(RowMap)}</tbody>
       </table>
-      <button onClick={state.flipped? unflip : flip}>Flip</button>
+      <button onClick={state.flipped ? unflip : flip}>Flip</button>
     </GameContext.Provider>
   );
 }
