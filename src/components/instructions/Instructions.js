@@ -4,13 +4,13 @@ import {IoCloseSharp} from 'react-icons/io5';
 
 
 function Instructions(props) {
-    const[closeModal, setCloseModal] = useState(true);
 
+    console.log(props.closeModal);
     return (
         <div>
-            {closeModal && (
-                <div className='instructions-popup'>
-                    <button onClick={() => setCloseModal(false)} className='close-button'>
+            {props.closeModal && (
+                <div className={`instructions-popup-${props.theme} instructions-popup`}>
+                    <button onClick={() => props.setCloseModal(false)} className='close-button'>
                         <IoCloseSharp size={24}/>
                     </button>
                     <div className='instructions-text'>

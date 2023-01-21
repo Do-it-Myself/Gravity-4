@@ -280,20 +280,16 @@ function Home() {
     playerwin = LeftDown(matrix, playerwin[0], playerwin[1], playerwin[2]);
 
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
-      state.gameOver = true;
       if (playerwin[0] > playerwin[1]) {
+        state.gameOver = true;
         state.winner = "Red wins";
       } else if (playerwin[0] < playerwin[1]) {
+        state.gameOver = true;
         state.winner = "Green wins";
       } else {
+        state.gameOver = true;
         state.winner = "Draw";
       }
-
-      for (let z=0; z<4; z++){
-        let row, col = arr[z];
-        cellMatrix[row][col] = "win" 
-      }
-      
 
       setState({ ...state });
       console.log(state.gameOver, state.winner);
@@ -392,6 +388,8 @@ function Home() {
     ]);
     console.log("reset");
   }
+  //Modal
+  const[closeModal, setCloseModal] = useState(true);
 
   return (
     <GameContext.Provider
@@ -436,11 +434,16 @@ function Home() {
         </div>
 
         <div className="instructions">
-          <Instructions />
+          <Instructions 
+          theme = {theme}
+          closeModal = {closeModal}
+          setCloseModal = {setCloseModal} />
         </div>
 
+        
         <div className="how-to-play">
-          <button className="how-to-play-button">
+          <button className="how-to-play-button"
+          onClick = {() => {setCloseModal(true)}}>
             <span>
               <BsQuestionCircleFill
                 size={24}
