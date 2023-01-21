@@ -346,10 +346,6 @@ function Home(props) {
             function={flip_board}
           />
         </div>
-        <br />
-        <div className="play-button">
-          <Playbutton icon={<GiAlliedStar size={24} />} button_text="Play" />
-        </div>
 
         <div className="instructions">
           <Instructions />
