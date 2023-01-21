@@ -247,7 +247,6 @@ function Home() {
     }
     state.currentPlayerIs1 = !state.currentPlayerIs1;
     setState({ ...state });
-    checkWinner(state.board);
 
     // flip cellMatrix
     for (let r = 0; r < 7; r++) {
@@ -262,6 +261,7 @@ function Home() {
       }
     }
 
+    checkWinner(state.board);
     setCellMatrix({ ...cellMatrix });
   }
   function flip_board() {
@@ -301,13 +301,10 @@ function Home() {
       state.gameOver = true;
       glow(playerwin[2]);
       if (playerwin[0] > playerwin[1]) {
-        state.gameOver = true;
         state.winner = "Red wins";
       } else if (playerwin[0] < playerwin[1]) {
-        state.gameOver = true;
         state.winner = "Green wins";
       } else {
-        state.gameOver = true;
         state.winner = "Draw";
       }
 
