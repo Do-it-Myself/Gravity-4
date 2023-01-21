@@ -4,7 +4,7 @@ import Playbutton from "../../components/playbutton/Playbutton";
 import Instructions from "../../components/instructions/Instructions";
 import { CgArrowsVAlt } from "react-icons/cg";
 import { GiAlliedStar } from "react-icons/gi";
-import { BsFillQuestionCircleFill } from "react-icons/bs";
+import { BsQuestionCircleFill } from "react-icons/bs";
 import Switch from "../../components/switch/Switch";
 import Board from "../../components/board/Board_2";
 import astronaut_green from "../../assets/green_astronaut.png";
@@ -406,7 +406,7 @@ function Home() {
         <div className="how-to-play">
           <button className="how-to-play-button">
             <span>
-              <BsFillQuestionCircleFill size={24} />
+              <BsQuestionCircleFill size={24} color= {theme=="light" ? "#000" : "#FFF"}/>
             </span>
           </button>
         </div>
