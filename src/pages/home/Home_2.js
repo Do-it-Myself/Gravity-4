@@ -299,7 +299,7 @@ function Home(props) {
 
   return (
     <GameContext.Provider
-      value={[state, setState, cellMatrix, setCellMatrix, playHandler]}
+      value={[state, setState, cellMatrix, setCellMatrix, playHandler, theme]}
     >
       <div className={`home-${theme} home`}>
         <div className = "darkmode-toggle">

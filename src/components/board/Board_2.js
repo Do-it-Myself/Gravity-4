@@ -8,6 +8,7 @@ function Board() {
     const cellMatrix = useContext(GameContext)[2];
     const setCellMatrix = useContext(GameContext)[3];
     const playHandler = useContext(GameContext)[4];
+    const theme = useContext(GameContext)[5];
 
   return (
     <div value={state}>
@@ -25,7 +26,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][0]}
+                      className={`${cellMatrix[0][0]} ${cellMatrix[0][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -40,7 +41,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][1]}
+                      className={`${cellMatrix[0][1]} ${cellMatrix[0][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -55,7 +56,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][2]}
+                      className={`${cellMatrix[0][2]} ${cellMatrix[0][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -70,7 +71,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][3]}
+                      className={`${cellMatrix[0][3]} ${cellMatrix[0][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -85,7 +86,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][4]}
+                      className={`${cellMatrix[0][4]} ${cellMatrix[0][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -100,7 +101,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][5]}
+                      className={`${cellMatrix[0][5]} ${cellMatrix[0][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -115,7 +116,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[0][6]}
+                      className={`${cellMatrix[0][6]} ${cellMatrix[0][6]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -132,7 +133,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][0]}
+                      className={`${cellMatrix[1][0]} ${cellMatrix[1][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -147,7 +148,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][1]}
+                      className={`${cellMatrix[1][1]} ${cellMatrix[1][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -162,7 +163,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][2]}
+                      className={`${cellMatrix[1][2]} ${cellMatrix[1][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -177,7 +178,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][3]}
+                      className={`${cellMatrix[1][3]} ${cellMatrix[1][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -192,7 +193,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][4]}
+                      className={`${cellMatrix[1][4]} ${cellMatrix[1][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -207,7 +208,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][5]}
+                      className={`${cellMatrix[1][5]} ${cellMatrix[1][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -222,7 +223,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[1][6]}
+                      className={`${cellMatrix[1][6]} ${cellMatrix[1][6]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -239,7 +240,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][0]}
+                      className={`${cellMatrix[2][0]} ${cellMatrix[2][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -254,7 +255,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][1]}
+                      className={`${cellMatrix[2][1]} ${cellMatrix[2][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -269,7 +270,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][2]}
+                      className={`${cellMatrix[2][2]} ${cellMatrix[2][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -284,7 +285,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][3]}
+                      className={`${cellMatrix[2][3]} ${cellMatrix[2][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -299,7 +300,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][4]}
+                      className={`${cellMatrix[2][4]} ${cellMatrix[2][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -314,7 +315,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][5]}
+                      className={`${cellMatrix[2][5]} ${cellMatrix[2][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -329,7 +330,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[2][6]}
+                      className={`${cellMatrix[2][6]} ${cellMatrix[2][6]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -346,7 +347,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][0]}
+                      className={`${cellMatrix[3][0]} ${cellMatrix[3][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -361,7 +362,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][1]}
+                      className={`${cellMatrix[3][1]} ${cellMatrix[3][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -376,7 +377,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][2]}
+                      className={`${cellMatrix[3][2]} ${cellMatrix[3][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -391,7 +392,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][3]}
+                      className={`${cellMatrix[3][3]} ${cellMatrix[3][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -406,7 +407,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][4]}
+                      className={`${cellMatrix[3][4]} ${cellMatrix[3][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -421,7 +422,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][5]}
+                      className={`${cellMatrix[3][5]} ${cellMatrix[3][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -436,7 +437,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[3][6]}
+                      className={`${cellMatrix[3][6]} ${cellMatrix[3][6]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -453,7 +454,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][0]}
+                      className={`${cellMatrix[4][0]} ${cellMatrix[4][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -468,7 +469,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][1]}
+                      className={`${cellMatrix[4][1]} ${cellMatrix[4][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -483,7 +484,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][2]}
+                      className={`${cellMatrix[4][2]} ${cellMatrix[4][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -498,7 +499,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][3]}
+                      className={`${cellMatrix[4][3]} ${cellMatrix[4][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -513,7 +514,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][4]}
+                      className={`${cellMatrix[4][4]} ${cellMatrix[4][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -528,7 +529,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][5]}
+                      className={`${cellMatrix[4][5]} ${cellMatrix[4][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -543,7 +544,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[4][6]}
+                      className={`${cellMatrix[4][6]} ${cellMatrix[4][6]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -560,7 +561,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][0]}
+                      className={`${cellMatrix[5][0]} ${cellMatrix[5][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -575,7 +576,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][1]}
+                      className={`${cellMatrix[5][1]} ${cellMatrix[5][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -590,7 +591,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][2]}
+                      className={`${cellMatrix[5][2]} ${cellMatrix[5][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -605,7 +606,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][3]}
+                      className={`${cellMatrix[5][3]} ${cellMatrix[5][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -620,7 +621,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][4]}
+                      className={`${cellMatrix[5][4]} ${cellMatrix[5][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -635,7 +636,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][5]}
+                      className={`${cellMatrix[5][5]} ${cellMatrix[5][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -650,7 +651,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[5][6]}
+                      className={`${cellMatrix[5][6]} ${cellMatrix[5][6]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -667,7 +668,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][0]}
+                      className={`${cellMatrix[6][0]} ${cellMatrix[6][0]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -682,7 +683,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][1]}
+                      className={`${cellMatrix[6][1]} ${cellMatrix[6][1]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -697,7 +698,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][2]}
+                      className={`${cellMatrix[6][2]} ${cellMatrix[6][2]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -712,7 +713,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][3]}
+                      className={`${cellMatrix[6][3]} ${cellMatrix[6][3]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -727,7 +728,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][4]}
+                      className={`${cellMatrix[6][4]} ${cellMatrix[6][4]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -742,7 +743,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][5]}
+                      className={`${cellMatrix[6][5]} ${cellMatrix[6][5]}-${theme}`}
                     />
                   </svg>
                 </span>
@@ -757,7 +758,7 @@ function Board() {
                       cx="50"
                       cy="50"
                       r="50"
-                      className={cellMatrix[6][6]}
+                      className={`${cellMatrix[6][6]} ${cellMatrix[6][6]}-${theme}`}
                     />
                   </svg>
                 </span>
