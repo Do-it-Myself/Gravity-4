@@ -5,6 +5,7 @@ import Instructions from "../../components/instructions/Instructions";
 import Endmodal from "../../components/endmodal/Endmodal";
 import { CgArrowsVAlt } from "react-icons/cg";
 import { GiAlliedStar } from "react-icons/gi";
+import {BsFillQuestionCircleFill} from "react-icons/bs";
 import Switch from "../../components/switch/Switch";
 import Board from "../../components/board/Board_2";
 
@@ -285,41 +286,36 @@ function Home(props) {
   }
 
   const [theme, setTheme] = useState("light");
-  const toggle_theme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+    const toggle_theme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    };
+    useEffect(() => {document.body.className = theme;}, [theme]);
 
   return (
     <GameContext.Provider
       value={[state, setState, cellMatrix, setCellMatrix, playHandler]}
     >
-      <div className="home">
-        <div className="test">
-          <button onClick={toggle_theme}>Toggle Theme</button>
+      <div className={`home-${theme} home`}>
+        <div className = "darkmode-toggle">
+            <Switch 
+            function = {toggle_theme} />
         </div>
 
-        <div className="darkmode-toggle">
-          <Switch />
-        </div>
-
-        <div className="game-info">
+        <div className={`game-info-${theme} game-info`}>
           <h2>Gravity 4</h2>
           <p>A twist on the classic Connect 4</p>
         </div>
 
-        <div className={flipped}>
-          <Board />
+        <div className={`player-turn-${theme}`}>
+          <h4>{props.player} turn</h4>
         </div>
 
-        <div className="player-turn">
-          <h4>{props.player} turn</h4>
+        <div className ={`flipped-${flipped}`}>
+          <Board />
         </div>
 
         <div className="flip-button">
@@ -339,7 +335,10 @@ function Home(props) {
         </div>
 
         <div className="how-to-play">
-          <button className="how-to-play-button"></button>
+          <button 
+          className= "how-to-play-button">
+              <span><BsFillQuestionCircleFill size={24}/></span>
+          </button>
         </div>
 
         <div className="end">
