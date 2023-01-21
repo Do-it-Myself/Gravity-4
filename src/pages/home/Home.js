@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Home.css";
-import Table from "../../components/table/Table";
 import Playbutton from "../../components/playbutton/Playbutton";
 import Instructions from "../../components/instructions/Instructions";
 import Endmodal from "../../components/endmodal/Endmodal";
@@ -8,10 +7,12 @@ import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import Switch from "../../components/switch/Switch"
 import "./Darkmode.css"
-import Board from "../../components/board/Board";
+import Board, {GameContext} from "../../components/board/Board";
 
 
 function Home(props) {
+    const state = useContext(GameContext);
+    
     const [flipped, setFlipped] = useState("flipped_true");
     const flip_board = () => {
         if (flipped === "flipped_false"){

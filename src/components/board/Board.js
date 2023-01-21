@@ -1,5 +1,7 @@
-import {React, useState} from 'react';
+import {React, useState, createContext} from 'react';
 import './Board.css';
+
+const GameContext = createContext();
 
 const initialState = {
   player1: 1,
@@ -213,7 +215,6 @@ function Board(props) {
         checkWinner(state.board);
       }
 
-
     function playHandler(rowIndex, columnIndex) {
         console.log("Table", rowIndex, columnIndex);
         
@@ -266,7 +267,7 @@ function Board(props) {
     }
 
     return (
-        <div>
+        <GameContext.Provider value={state}>
             <div id='connect4' className='board-container'>
                 <table>
                     <tbody>
@@ -630,8 +631,10 @@ function Board(props) {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </GameContext.Provider>
     );
 }
 
 export default Board;
+
+export { GameContext };
