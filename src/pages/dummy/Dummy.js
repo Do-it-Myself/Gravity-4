@@ -4,6 +4,7 @@ import Table from "../../components/table/Table";
 import Board from "../../components/board/Board";
 import Playbutton from "../../components/playbutton/Playbutton";
 import Instructions from "../../components/instructions/Instructions";
+import Endmodal from "../../components/endmodal/Endmodal";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 
@@ -37,6 +38,10 @@ function Dummy(props) {
 
             <div className="instructions">
                 <Instructions/>
+            </div>
+
+            <div className="end">
+                <Endmodal/>
             </div>
         </div>)
 }
