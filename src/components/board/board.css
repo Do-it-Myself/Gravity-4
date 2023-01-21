@@ -22,6 +22,10 @@ table {
     z-index: 100;
 }
 
+#connect4 table td:hover {
+    cursor: pointer;
+}
+
 .chip-position {
     display: flex;
     align-items: center;

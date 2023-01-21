@@ -64,6 +64,12 @@
 .how-to-play-button {
     background-color: transparent;
     border: none;
+    transition: ease 0.25s;
+}
+
+.how-to-play-button:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .how-to-play-button span {
