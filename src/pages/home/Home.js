@@ -5,6 +5,7 @@ import Instructions from "../../components/instructions/Instructions";
 import Endmodal from "../../components/endmodal/Endmodal";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
+import {BsFillQuestionCircleFill} from "react-icons/bs";
 import Switch from "../../components/switch/Switch"
 import "./Darkmode.css"
 import Board, {GameContext} from "../../components/board/Board";
@@ -15,10 +16,10 @@ function Home(props) {
     
     const [flipped, setFlipped] = useState("flipped_true");
     const flip_board = () => {
-        if (flipped === "flipped_false"){
-            setFlipped("flipped_true");
+        if (flipped === false){
+            setFlipped(true);
         } else {
-            setFlipped("flipped_false");
+            setFlipped(false);
         }
     }
 
@@ -33,7 +34,7 @@ function Home(props) {
     useEffect(() => {document.body.className = theme;}, [theme]);
 
     return (
-        <div className='home'>
+        <div className={`home-${theme}`}>
             
             <div className = "test">
                 <button onClick = {toggle_theme}>Toggle Theme</button>
@@ -43,19 +44,19 @@ function Home(props) {
                 <Switch />
             </div>
 
-            <div className='game-info'>
+            <div className={`game-info-${theme}`}>
                 <h2>Gravity 4</h2>
                 <p>A twist on the classic Connect 4</p>
             </div>
 
-            <div className ={flipped}>
+            <div className={`player-turn-${theme}`}>
+                <h4>{props.player} turn</h4>
+            </div>
+
+            <div className ={`flipped-${flipped}`}>
                 <Board />
             </div>
 
-            <div className='player-turn'>
-                <h4>{props.player} turn</h4>
-            </div>
-            
             <div className='flip-button'>
                 <Playbutton 
                 icon={<CgArrowsVAlt size={24}/>} 
@@ -74,7 +75,7 @@ function Home(props) {
             </div>
 
             <div className="how-to-play">
-                <button className="how-to-play-button"></button>
+                <button className="how-to-play-button"><span><BsFillQuestionCircleFill size={24}/></span></button>
             </div>
 
             <div className="end">
