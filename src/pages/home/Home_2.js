@@ -212,12 +212,12 @@ function Home(props) {
     setCellMatrix({ ...cellMatrix });
   }
 
-  const [flipped, setFlipped] = useState("flipped_false");
+  const [flipped, setFlipped] = useState(false);
   const flip_board = () => {
-    if (flipped === "flipped_false") {
-      setFlipped("flipped_true");
+    if (flipped === false) {
+      setFlipped(true);
     } else {
-      setFlipped("flipped_false");
+      setFlipped(false);
     }
 
     const myTimeout = setTimeout(flipToken, 1000);

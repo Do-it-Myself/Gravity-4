@@ -8,7 +8,7 @@ import Dummy from "./pages/dummy/Dummy";
 function App() {
   return (
     <div className="App">
-      <Home2/>
+      <Home2 />
     </div>
   );
 }
