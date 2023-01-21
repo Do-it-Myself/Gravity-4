@@ -5,11 +5,11 @@ import Instructions from "../../components/instructions/Instructions";
 import Endmodal from "../../components/endmodal/Endmodal";
 import { CgArrowsVAlt } from "react-icons/cg";
 import { GiAlliedStar } from "react-icons/gi";
-import {BsFillQuestionCircleFill} from "react-icons/bs";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 import Switch from "../../components/switch/Switch";
 import Board from "../../components/board/Board_2";
-import astronaut_green from '../../assets/green_astronaut.png';
-import astronaut_red from '../../assets/red_astronaut.png';
+import astronaut_green from "../../assets/green_astronaut.png";
+import astronaut_red from "../../assets/red_astronaut.png";
 
 console.log("board 2");
 
@@ -135,6 +135,18 @@ function LeftDown(matrix, player1win, player2win) {
   console.log([player1win, player2win]);
   return [player1win, player2win];
 }
+function Full(matrix) {
+  let full = true;
+  for (let r = 0; r < 6; r++) {
+    for (let c = 0; c < 6; c++) {
+      if (matrix[r][c] === 0) {
+        full = false;
+        break;
+      }
+    }
+  }
+  return full;
+}
 
 function Home(props) {
   const [state, setState] = useState(initialState);
@@ -243,11 +255,16 @@ function Home(props) {
       }
       setState({ ...state });
       console.log(state.gameOver, state.winner);
+    } else if (Full(matrix)) {
+      state.gameOver = true;
+      state.winner = 0;
+      setState({ ...state });
     }
   }
 
   function playHandler(rowIndex, columnIndex) {
     console.log("Table", rowIndex, columnIndex, "State flipped", state.flipped);
+
 
     const column = state.board.map((x) => x[columnIndex]);
     if (state.flipped) {
@@ -288,23 +305,24 @@ function Home(props) {
   }
 
   const [theme, setTheme] = useState("light");
-    const toggle_theme = () => {
-        if (theme === 'light') {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-    };
-    useEffect(() => {document.body.className = theme;}, [theme]);
+  const toggle_theme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <GameContext.Provider
       value={[state, setState, cellMatrix, setCellMatrix, playHandler]}
     >
       <div className={`home-${theme} home`}>
-        <div className = "darkmode-toggle">
-            <Switch 
-            function = {toggle_theme} />
+        <div className="darkmode-toggle">
+          <Switch function={toggle_theme} />
         </div>
 
         <div className={`game-info-${theme} game-info`}>
@@ -316,7 +334,7 @@ function Home(props) {
           <h4>{props.player} turn</h4>
         </div>
 
-        <div className ={`flipped-${flipped}`}>
+        <div className={`flipped-${flipped}`}>
           <Board />
         </div>
 
@@ -337,9 +355,10 @@ function Home(props) {
         </div>
 
         <div className="how-to-play">
-          <button 
-          className= "how-to-play-button">
-              <span><BsFillQuestionCircleFill size={24}/></span>
+          <button className="how-to-play-button">
+            <span>
+              <BsFillQuestionCircleFill size={24} />
+            </span>
           </button>
         </div>
 
@@ -347,8 +366,12 @@ function Home(props) {
           <Endmodal />
         </div>
 
-        <div className="astronaut astronaut-red"><img src={astronaut_red}></img></div>
-            <div className="astronaut astronaut-green"><img src={astronaut_green}></img></div>
+        <div className="astronaut astronaut-red">
+          <img src={astronaut_red}></img>
+        </div>
+        <div className="astronaut astronaut-green">
+          <img src={astronaut_green}></img>
+        </div>
       </div>
     </GameContext.Provider>
   );
