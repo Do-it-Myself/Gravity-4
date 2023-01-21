@@ -15,6 +15,7 @@ code {
 
 :root {
   --color-background: #1F1F1F;
+  --color-background-secondary: #4c4c4c;
   --color-board: #4F4786;
   --color-player-1: #F03737;
   --color-player-2: #4ADE45;

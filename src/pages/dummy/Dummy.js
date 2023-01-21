@@ -3,6 +3,7 @@ import "./Dummy.css";
 import Table from "../../components/table/Table";
 import Board from "../../components/board/Board";
 import Playbutton from "../../components/playbutton/Playbutton";
+import Instructions from "../../components/instructions/Instructions";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 
@@ -32,6 +33,10 @@ function Dummy(props) {
                 <Playbutton  
                 icon = {<GiAlliedStar size={24}/>}
                 button_text="Play"/>
+            </div>
+
+            <div className="instructions">
+                <Instructions/>
             </div>
         </div>)
 }

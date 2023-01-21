@@ -1,7 +1,7 @@
-import React, { useReducer, createContext } from "react";
+import React, { useState, createContext } from "react";
 import Row from "./Row";
 
-const GameContext = createContext()
+const GameContext = createContext();
 
 const initialState = {
   player1: 1,
@@ -19,20 +19,110 @@ const initialState = {
   gameOver: false,
 };
 
-function Table() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+function Horizontal(matrix, player1win, player2win) {
+  let count = 0;
+  let player = 0;
+  for (let r = 6; r >= 0; r--) {
+    for (let c = 0; c < 7; c++) {
+      if (matrix[r][c] === 0) {
+        count = 0;
+      } else if (matrix[r][c] === player) {
+        count += 1;
+      } else {
+        count = 1;
+      }
+      player = matrix[r][c];
 
-  function reducer(state, action) {
-    const newState = state;
-    newState.board[action.rowIndex][action.columnIndex] = 1;
-    newState.currentPlayerIs1 = !state.currentPlayerIs1;
-    console.log(newState.currentPlayerIs1);
-    return newState;
+      if (count >= 4) {
+        if (matrix[r][c] === 1) {
+          player1win += 1;
+        } else {
+          player2win += 1;
+        }
+      }
+    }
   }
+  return [player1win, player2win];
+}
+
+function Vertical(matrix, player1win, player2win) {
+  let count = 0;
+  let player = 0;
+  for (let c = 0; c < 7; c++) {
+    for (let r = 6; r >= 0; r--) {
+      if (matrix[r][c] === 0) {
+        count = 0;
+      } else if (matrix[r][c] === player) {
+        count += 1;
+      } else {
+        count = 1;
+      }
+      player = matrix[r][c];
+
+      if (count >= 4) {
+        if (matrix[r][c] === 1) {
+          player1win += 1;
+        } else {
+          player2win += 1;
+        }
+      }
+    }
+  }
+  return [player1win, player2win];
+}
+
+function RightDown(matrix, player1win, player2win) {
+  let count = 0;
+  let player = 0;
+  for (let r = 0; r < 7; r++) {
+    for (let c = 0; c < 7; c++) {
+      if (r + 4 >= 7 || c + 4 >= 7) {
+        break;
+      }
+    }
+  }
+}
+
+function checkWinner(matrix) {
+  let playerwin = [0, 0];
+  playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
+  playerwin = Vertical(matrix, playerwin[0], playerwin[1]);
+
+  if (playerwin[0] !== 0 || playerwin[1] !== 0) {
+    if (playerwin[0] > playerwin[1]) {
+      console.log("1 win");
+    } else if (playerwin[0] < playerwin[1]) {
+      console.log("2 win");
+    } else {
+      console.log("Draw");
+    }
+  }
+}
+
+function Table() {
+  const [state, setState] = useState(initialState);
 
   function playHandler(rowIndex, columnIndex) {
     console.log("Table", rowIndex, columnIndex);
-    dispatch({ rowIndex: rowIndex, columnIndex: columnIndex });
+
+    const column = state.board.map((x) => x[columnIndex]);
+    for (let i = 6; i >= 0; i--) {
+      if (column[i] === 0) {
+        const newState = state;
+        if (newState.currentPlayerIs1) {
+          newState.board[i][columnIndex] = 1;
+        } else {
+          newState.board[i][columnIndex] = 2;
+        }
+        newState.currentPlayerIs1 = !state.currentPlayerIs1;
+        setState(newState);
+
+        break;
+      }
+    }
+
+    console.log(state.board, state.currentPlayerIs1);
+    checkWinner(state.board);
   }
 
   function RowMap(row, i) {
@@ -40,11 +130,9 @@ function Table() {
   }
 
   return (
-    <GameContext.Provider value={{state, playHandler}}>
+    <GameContext.Provider value={state}>
       <table>
-        <tbody>
-          {state.board.map(RowMap)}
-        </tbody>
+        <tbody>{state.board.map(RowMap)}</tbody>
       </table>
     </GameContext.Provider>
   );
@@ -52,4 +140,4 @@ function Table() {
 
 export default Table;
 
-export {GameContext};
+export { GameContext };

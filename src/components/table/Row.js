@@ -3,7 +3,7 @@ import Cell from "./Cell";
 import {GameContext} from "./Table"
 
 export default function Row({ rowIndex, playHandler }) {
-  const currState = useContext(GameContext).state;
+  const currState = useContext(GameContext);
 
   function CellMap(value, i) {
     return <Cell value={value} key={i} columnIndex={i} rowIndex={rowIndex} playHandler={playHandler} />;
