@@ -4,7 +4,8 @@ import "./playbutton.css";
 function Playbutton(props) {
     return (
         <div>
-            <button className="game-buttons">
+            <button className="game-buttons"
+            onClick = {() => {props.function()}}>
                 <div className='button-inner'>
                     {props.icon}
                     <p>{props.button_text}</p>

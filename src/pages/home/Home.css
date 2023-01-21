@@ -23,3 +23,13 @@
     font-size: 2rem;
     margin: 2rem 0 0 0;
 }
+
+.flipped_true{
+    transform: rotate(180deg);
+    transition: transform 1s ease-in-out;
+}
+
+.flipped_false{
+    transform: rotate(0deg);
+    transition: transform 1s ease-in-out;
+}
