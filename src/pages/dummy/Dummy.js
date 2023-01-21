@@ -9,6 +9,9 @@ import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import {BsFillQuestionCircleFill} from "react-icons/bs";
 
+import astronaut_green from '../../assets/astronaut_green_alt.png';
+import astronaut_red from '../../assets/astronaut_red.png';
+
 function Dummy(props) {
     const [flipped, setFlipped] = useState("flipped_true");
     const flip_board = () => {
@@ -22,7 +25,7 @@ function Dummy(props) {
     return (
         <div className='home'>
             <div className='game-info'>
-                <h2>Gravity 4</h2>
+                <h2>Dummy</h2>
                 <p>A twist on the classic Connect 4</p>
             </div>
 
@@ -59,6 +62,9 @@ function Dummy(props) {
             <div className="end">
                 <Endmodal/>
             </div>
+
+            <div className="astronaut astronaut-red"><img src={astronaut_red}></img></div>
+            <div className="astronaut astronaut-green"><img src={astronaut_green}></img></div>
 
             
         </div>)
