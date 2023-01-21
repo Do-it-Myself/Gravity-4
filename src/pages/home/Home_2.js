@@ -274,6 +274,16 @@ function Home() {
   }
 
   // Check Winner
+  function glow(winSet) {
+    const winArray = Array.from(winSet);
+    for (let i = 0; i < winArray.length; i++) {
+      let r = parseInt(winArray[i][0]);
+      let c = parseInt(winArray[i][1]);
+      cellMatrix[r][c] += " circle-win";
+    }
+    setCellMatrix({ ...cellMatrix });
+  }
+
   function checkWinner(matrix) {
     let playerwin = [0, 0, new Set()];
     playerwin = Horizontal(matrix, playerwin[0], playerwin[1], playerwin[2]);
@@ -289,9 +299,10 @@ function Home() {
         state.winner = "Green wins";
       } else {
         state.winner = "Draw";
-      }      
+      }
 
       setState({ ...state });
+      glow(playerwin[2]);
       console.log(state.gameOver, state.winner);
     } else if (Full(matrix)) {
       state.gameOver = true;
