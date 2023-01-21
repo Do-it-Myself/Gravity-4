@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import './Endmodal.css';
+import { GameContext } from "../../pages/home/Home_2";
 
 function Endmodal(props) {
     const[closeModal, setCloseModal] = useState(true);

@@ -205,6 +205,7 @@ function Home(props) {
       }
       state.flipped = true;
     }
+    state.currentPlayerIs1 = !state.currentPlayerIs1;
     setState({ ...state });
     checkWinner(state.board);
 
@@ -331,7 +332,7 @@ function Home(props) {
         </div>
 
         <div className={`player-turn-${theme}`}>
-          <h4>{props.player} turn</h4>
+          <h4>{state.currentPlayerIs1 ? "Red's " : "Green's"} turn</h4>
         </div>
 
         <div className={`flipped-${flipped}`}>
@@ -363,7 +364,7 @@ function Home(props) {
         </div>
 
         <div className="end">
-          <Endmodal />
+          {state.gameOver ? <Endmodal /> : <div />}
         </div>
 
         <div className="astronaut astronaut-red">
