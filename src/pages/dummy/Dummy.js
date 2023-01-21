@@ -21,7 +21,7 @@ function Dummy(props) {
 
     return (
         <div className='home'>
-            <div className='game-info'>
+            <div className='game-info-dummy'>
                 <h2>Gravity 4</h2>
                 <p>A twist on the classic Connect 4</p>
             </div>
