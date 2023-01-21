@@ -34,17 +34,14 @@ function Home(props) {
     useEffect(() => {document.body.className = theme;}, [theme]);
 
     return (
-        <div className={`home-${theme}`}>
+        <div className={`home-${theme} home`}>
             
-            <div className = "test">
-                <button onClick = {toggle_theme}>Toggle Theme</button>
-            </div>
-
             <div className = "darkmode-toggle">
-                <Switch />
+                <Switch 
+                function = {toggle_theme} />
             </div>
 
-            <div className={`game-info-${theme}`}>
+            <div className={`game-info-${theme} game-info`}>
                 <h2>Gravity 4</h2>
                 <p>A twist on the classic Connect 4</p>
             </div>
@@ -75,7 +72,10 @@ function Home(props) {
             </div>
 
             <div className="how-to-play">
-                <button className="how-to-play-button"><span><BsFillQuestionCircleFill size={24}/></span></button>
+                <button 
+                className= "how-to-play-button">
+                    <span><BsFillQuestionCircleFill size={24}/></span>
+                </button>
             </div>
 
             <div className="end">

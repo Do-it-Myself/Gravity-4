@@ -2,17 +2,17 @@
     height: 100vh;
 }
 
-.game-info {
+.game-info-dummy {
     color: var(--color-font);
     padding-top: 2rem;
 }
 
-.game-info h2 {
+.game-info-dummy h2 {
     font-size: 5rem;
     font-weight: bold;
 }
 
-.game-info p {
+.game-info-dummy p {
     font-size: 1.25rem;
     font-weight: 400;
     padding-top: 0.25rem;
@@ -50,4 +50,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.astronaut {
+    animation: float 5s ease-in-out infinite;
+}
+
+.astronaut img {
+    height: 200px;
+    transform: rotate(-30deg);
+}
+
+.astronaut-red {
+    position: fixed;
+    bottom: 100px;
+    left: 100px;
+}
+
+.astronaut-green {
+    position: fixed;
+    top: 100px;
+    right: 100px;
 }
