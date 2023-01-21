@@ -42,7 +42,7 @@ const initialCellMatrix = [
 
 const GameContext = createContext();
 
-function Horizontal(matrix, player1win, player2win, win_array) {
+function Horizontal(matrix, player1win, player2win, winSet) {
   let count = 0;
   let player = 0;
   for (let r = 6; r >= 0; r--) {
@@ -57,6 +57,11 @@ function Horizontal(matrix, player1win, player2win, win_array) {
       player = matrix[r][c];
 
       if (count >= 4) {
+        for (let i = 0; i < 4; i++) {
+          const r_idx = r.toString();
+          const c_idx = (c - i).toString();
+          winSet.add(r_idx + c_idx);
+        }
         if (matrix[r][c] === 1) {
           player1win += 1;
         } else {
@@ -65,9 +70,10 @@ function Horizontal(matrix, player1win, player2win, win_array) {
       }
     }
   }
-  return [player1win, player2win, win_array];
+  return [player1win, player2win, winSet];
 }
-function Vertical(matrix, player1win, player2win, win_array) {
+function Vertical(matrix, player1win, player2win, winSet) {
+  console.log("set", winSet);
   let count = 0;
   let player = 0;
   for (let c = 0; c < 7; c++) {
@@ -82,6 +88,11 @@ function Vertical(matrix, player1win, player2win, win_array) {
       player = matrix[r][c];
 
       if (count >= 4) {
+        for (let i = 0; i < 4; i++) {
+          const r_idx = (r + i).toString();
+          const c_idx = c.toString();
+          winSet.add(r_idx + c_idx);
+        }
         if (matrix[r][c] === 1) {
           player1win += 1;
         } else {
@@ -90,35 +101,48 @@ function Vertical(matrix, player1win, player2win, win_array) {
       }
     }
   }
-  return [player1win, player2win, win_array];
+  return [player1win, player2win, winSet];
 }
-function RightDown(matrix, player1win, player2win, win_array) {
+function RightDown(matrix, player1win, player2win, winSet) {
   for (let r = 0; r < 7; r++) {
     for (let c = 0; c < 7; c++) {
       if (r + 4 > 7 || c + 4 > 7) {
         break;
-      } else if (matrix[r][c] === 1) {
-        if (
-          matrix[r + 1][c + 1] === 1 &&
-          matrix[r + 2][c + 2] === 1 &&
-          matrix[r + 3][c + 3] === 1
-        ) {
-          player1win += 1;
-        }
-      } else if (matrix[r][c] === 2) {
-        if (
-          matrix[r + 1][c + 1] === 2 &&
-          matrix[r + 2][c + 2] === 2 &&
-          matrix[r + 3][c + 3] === 2
-        ) {
-          player2win += 1;
+      } else {
+        if (matrix[r][c] === 1) {
+          if (
+            matrix[r + 1][c + 1] === 1 &&
+            matrix[r + 2][c + 2] === 1 &&
+            matrix[r + 3][c + 3] === 1
+          ) {
+            player1win += 1;
+            console.log(r, c);
+            for (let i = 0; i < 4; i++) {
+              const r_idx = (r + i).toString();
+              const c_idx = (c + i).toString();
+              winSet.add(r_idx + c_idx);
+            }
+          }
+        } else if (matrix[r][c] === 2) {
+          if (
+            matrix[r + 1][c + 1] === 2 &&
+            matrix[r + 2][c + 2] === 2 &&
+            matrix[r + 3][c + 3] === 2
+          ) {
+            player2win += 1;
+            for (let i = 0; i < 4; i++) {
+              const r_idx = (r + i).toString();
+              const c_idx = (c + i).toString();
+              winSet.add(r_idx + c_idx);
+            }
+          }
         }
       }
     }
   }
-  return [player1win, player2win, win_array];
+  return [player1win, player2win, winSet];
 }
-function LeftDown(matrix, player1win, player2win, win_array) {
+function LeftDown(matrix, player1win, player2win, winSet) {
   for (let r = 0; r < 7; r++) {
     for (let c = 6; c >= 0; c--) {
       if (r + 4 > 7 || c < 3) {
@@ -130,6 +154,11 @@ function LeftDown(matrix, player1win, player2win, win_array) {
           matrix[r + 3][c - 3] === 1
         ) {
           player1win += 1;
+          for (let i = 0; i < 4; i++) {
+            const r_idx = (r + i).toString();
+            const c_idx = (c - i).toString();
+            winSet.add(r_idx + c_idx);
+          }
         }
       } else if (matrix[r][c] === 2) {
         if (
@@ -138,12 +167,16 @@ function LeftDown(matrix, player1win, player2win, win_array) {
           matrix[r + 3][c - 3] === 2
         ) {
           player1win += 2;
+          for (let i = 0; i < 4; i++) {
+            const r_idx = (r + i).toString();
+            const c_idx = (c - i).toString();
+            winSet.add(r_idx + c_idx);
+          }
         }
       }
     }
   }
-  console.log([player1win, player2win]);
-  return [player1win, player2win, win_array];
+  return [player1win, player2win, winSet];
 }
 function Full(matrix) {
   let full = true;
@@ -229,23 +262,23 @@ function Home() {
 
     setCellMatrix({ ...cellMatrix });
   }
-  const flip_board = () => {
+  function flip_board() {
     if (flipped === false) {
       setFlipped(true);
     } else {
       setFlipped(false);
     }
 
-    const myTimeout = setTimeout(flipToken, 1000);
-  };
+    setTimeout(flipToken, 1000);
+  }
 
   // Check Winner
   function checkWinner(matrix) {
-    let playerwin = [0, 0, []];
-    playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
-    playerwin = Vertical(matrix, playerwin[0], playerwin[1]);
-    playerwin = RightDown(matrix, playerwin[0], playerwin[1]);
-    playerwin = LeftDown(matrix, playerwin[0], playerwin[1]);
+    let playerwin = [0, 0, new Set()];
+    playerwin = Horizontal(matrix, playerwin[0], playerwin[1], playerwin[2]);
+    playerwin = Vertical(matrix, playerwin[0], playerwin[1], playerwin[2]);
+    playerwin = RightDown(matrix, playerwin[0], playerwin[1], playerwin[2]);
+    playerwin = LeftDown(matrix, playerwin[0], playerwin[1], playerwin[2]);
 
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
       if (playerwin[0] > playerwin[1]) {
@@ -265,6 +298,8 @@ function Home() {
       state.winner = "Draw";
       setState({ ...state });
     }
+
+    console.log(playerwin[2]);
   }
 
   // Play
@@ -306,13 +341,11 @@ function Home() {
         }
       }
       checkWinner(state.board);
-      console.log("CellMatrix", cellMatrix);
-      console.log("State board", state.board)
     }
   }
 
   // Theme
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const toggle_theme = () => {
     if (theme === "light") {
       setTheme("dark");
