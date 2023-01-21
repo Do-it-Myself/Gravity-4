@@ -50,7 +50,10 @@ table {
     fill: var(--color-background-light);
 }
 
-.animated {
-    top: 0;
-    left: 0;
+.red-win {
+
+}
+
+.green-win {
+    
 }
