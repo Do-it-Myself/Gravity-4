@@ -42,7 +42,7 @@ const initialCellMatrix = [
 
 const GameContext = createContext();
 
-function Horizontal(matrix, player1win, player2win) {
+function Horizontal(matrix, player1win, player2win, win_array) {
   let count = 0;
   let player = 0;
   for (let r = 6; r >= 0; r--) {
@@ -65,9 +65,9 @@ function Horizontal(matrix, player1win, player2win) {
       }
     }
   }
-  return [player1win, player2win];
+  return [player1win, player2win, win_array];
 }
-function Vertical(matrix, player1win, player2win) {
+function Vertical(matrix, player1win, player2win, win_array) {
   let count = 0;
   let player = 0;
   for (let c = 0; c < 7; c++) {
@@ -90,9 +90,9 @@ function Vertical(matrix, player1win, player2win) {
       }
     }
   }
-  return [player1win, player2win];
+  return [player1win, player2win, win_array];
 }
-function RightDown(matrix, player1win, player2win) {
+function RightDown(matrix, player1win, player2win, win_array) {
   for (let r = 0; r < 7; r++) {
     for (let c = 0; c < 7; c++) {
       if (r + 4 > 7 || c + 4 > 7) {
@@ -116,9 +116,9 @@ function RightDown(matrix, player1win, player2win) {
       }
     }
   }
-  return [player1win, player2win];
+  return [player1win, player2win, win_array];
 }
-function LeftDown(matrix, player1win, player2win) {
+function LeftDown(matrix, player1win, player2win, win_array) {
   for (let r = 0; r < 7; r++) {
     for (let c = 6; c >= 0; c--) {
       if (r + 4 > 7 || c < 3) {
@@ -143,7 +143,7 @@ function LeftDown(matrix, player1win, player2win) {
     }
   }
   console.log([player1win, player2win]);
-  return [player1win, player2win];
+  return [player1win, player2win, win_array];
 }
 function Full(matrix) {
   let full = true;
@@ -241,7 +241,7 @@ function Home() {
 
   // Check Winner
   function checkWinner(matrix) {
-    let playerwin = [0, 0];
+    let playerwin = [0, 0, []];
     playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
     playerwin = Vertical(matrix, playerwin[0], playerwin[1]);
     playerwin = RightDown(matrix, playerwin[0], playerwin[1]);
@@ -306,6 +306,8 @@ function Home() {
         }
       }
       checkWinner(state.board);
+      console.log("CellMatrix", cellMatrix);
+      console.log("State board", state.board)
     }
   }
 
@@ -351,6 +353,8 @@ function Home() {
       ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
     ]);
     console.log("reset");
+
+    setFlipped(false);
   }
 
   return (
