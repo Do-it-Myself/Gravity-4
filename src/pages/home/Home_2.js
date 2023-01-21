@@ -180,8 +180,8 @@ function LeftDown(matrix, player1win, player2win, winSet) {
 }
 function Full(matrix) {
   let full = true;
-  for (let r = 0; r < 6; r++) {
-    for (let c = 0; c < 6; c++) {
+  for (let r = 0; r < 7; r++) {
+    for (let c = 0; c < 7; c++) {
       if (matrix[r][c] === 0) {
         full = false;
         break;
