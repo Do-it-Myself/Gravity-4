@@ -268,7 +268,6 @@ function Home() {
     } else {
       setFlipped(false);
     }
-
     setTimeout(flipToken, 1000);
   }
 
@@ -359,6 +358,7 @@ function Home() {
 
   // Reset
   function reset() {
+    setFlipped(false);
     setState({
       player1: 1,
       player2: 2,
@@ -437,7 +437,10 @@ function Home() {
         <div className="how-to-play">
           <button className="how-to-play-button">
             <span>
-              <BsQuestionCircleFill size={24} color= {theme=="light" ? "#000" : "#FFF"}/>
+              <BsQuestionCircleFill
+                size={24}
+                color={theme == "light" ? "#000" : "#FFF"}
+              />
             </span>
           </button>
         </div>
