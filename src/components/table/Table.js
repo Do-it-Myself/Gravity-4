@@ -92,7 +92,7 @@ function RightDown(matrix, player1win, player2win) {
           matrix[r + 2][c + 2] === 1 &&
           matrix[r + 3][c + 3] === 1
         ) {
-          player1win += 1;
+          player2win += 1;
         }
       }
     }
@@ -131,7 +131,7 @@ function Table() {
           newState.board[i][columnIndex] = 2;
         }
         newState.currentPlayerIs1 = !state.currentPlayerIs1;
-        setState(newState);
+        setState({...newState});
 
         break;
       }
