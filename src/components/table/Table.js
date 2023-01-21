@@ -78,6 +78,22 @@ function RightDown(matrix, player1win, player2win) {
     for (let c = 0; c < 7; c++) {
       if (r + 4 >= 7 || c + 4 >= 7) {
         break;
+      } else if (player === 1) {
+        if (
+          matrix[r + 1][c + 1] === 1 &&
+          matrix[r + 2][c + 2] === 1 &&
+          matrix[r + 3][c + 3] === 1
+        ) {
+          player1win += 1;
+        }
+      } else if (player === 1) {
+        if (
+          matrix[r + 1][c + 1] === 1 &&
+          matrix[r + 2][c + 2] === 1 &&
+          matrix[r + 3][c + 3] === 1
+        ) {
+          player1win += 1;
+        }
       }
     }
   }
