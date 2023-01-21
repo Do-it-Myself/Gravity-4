@@ -281,16 +281,21 @@ function Home() {
     playerwin = LeftDown(matrix, playerwin[0], playerwin[1], playerwin[2]);
 
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
+      state.gameOver = true;
       if (playerwin[0] > playerwin[1]) {
-        state.gameOver = true;
         state.winner = "Red wins";
       } else if (playerwin[0] < playerwin[1]) {
-        state.gameOver = true;
         state.winner = "Green wins";
       } else {
-        state.gameOver = true;
         state.winner = "Draw";
       }
+
+      for (let z=0; z<4; z++){
+        let row, col = arr[z];
+        cellMatrix[row][col] = "win" 
+      }
+      
+
       setState({ ...state });
       console.log(state.gameOver, state.winner);
     } else if (Full(matrix)) {
