@@ -2,34 +2,56 @@
     height: 100vh;
 }
 
-.game-info {
+.game-info-dark {
     color: var(--color-font);
     padding-top: 2rem;
 }
 
-.game-info h2 {
+.game-info-dark h2 {
     font-size: 5rem;
     font-weight: bold;
 }
 
-.game-info p {
+.game-info-dark p {
     font-size: 1.25rem;
     font-weight: 400;
     padding-top: 0.25rem;
 }
 
-.player-turn {
+.game-info-light {
+    color: var(--color-font-light);
+    padding-top: 2rem;
+}
+
+.game-info-light h2 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.game-info-light p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding-top: 0.25rem;
+}
+
+.player-turn-dark {
     color: var(--color-font);
     font-size: 2rem;
     margin: 2rem 0 0 0;
 }
 
-.flipped_true{
+.player-turn-light {
+    color: var(--color-font-light);
+    font-size: 2rem;
+    margin: 2rem 0 0 0;
+}
+
+.flipped-true{
     transform: rotate(180deg);
     transition: transform 1s ease-in-out;
 }
 
-.flipped_false{
+.flipped-false{
     transform: rotate(0deg);
     transition: transform 1s ease-in-out;
 }
