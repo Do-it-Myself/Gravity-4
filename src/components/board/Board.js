@@ -44,6 +44,7 @@ function Board(props) {
         } else {
             newState.board[rowIndex][columnIndex] = 2;
             newCellMatrix[rowIndex][columnIndex] = "circle-green"
+            return () => setCellMatrix
         }
         newState.currentPlayerIs1 = !state.currentPlayerIs1;
     
