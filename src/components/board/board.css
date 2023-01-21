@@ -36,6 +36,6 @@ table {
     fill: var(--color-player-2);
 }
 
-.empty-slot {
+.empty {
     fill: var(--color-background)
 }
