@@ -2,7 +2,6 @@ import React, { useEffect, useState, createContext } from "react";
 import "./Home.css";
 import Playbutton from "../../components/playbutton/Playbutton";
 import Instructions from "../../components/instructions/Instructions";
-import Endmodal from "../../components/endmodal/Endmodal";
 import { CgArrowsVAlt } from "react-icons/cg";
 import { GiAlliedStar } from "react-icons/gi";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
@@ -358,7 +357,7 @@ function Home() {
 
   return (
     <GameContext.Provider
-      value={[state, setState, cellMatrix, setCellMatrix, playHandler, reset]}
+      value={[state, setState, cellMatrix, setCellMatrix, playHandler, theme]}
     >
       <div className={`home-${theme} home`}>
         <div className="darkmode-toggle">
@@ -397,7 +396,6 @@ function Home() {
             />
           )}
         </div>
-        <br />
 
         <div className="instructions">
           <Instructions />

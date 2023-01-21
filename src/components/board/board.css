@@ -36,6 +36,10 @@ table {
     fill: var(--color-player-2);
 }
 
-.empty {
+.empty-dark {
     fill: var(--color-background)
+}
+
+.empty-light {
+    fill: var(--color-background-light)
 }

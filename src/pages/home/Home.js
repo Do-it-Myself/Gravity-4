@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import "./Home.css";
 import Playbutton from "../../components/playbutton/Playbutton";
 import Instructions from "../../components/instructions/Instructions";
-import Endmodal from "../../components/endmodal/Endmodal";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import {BsFillQuestionCircleFill} from "react-icons/bs";
@@ -75,10 +74,6 @@ function Home(props) {
                 className= "how-to-play-button">
                     <span><BsFillQuestionCircleFill size={24}/></span>
                 </button>
-            </div>
-
-            <div className="end">
-                <Endmodal/>
             </div>
         </div>)
 }
