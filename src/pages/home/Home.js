@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Table from "../../components/table/Table";
 import Playbutton from "../../components/playbutton/Playbutton";
+import Instructions from "../../components/instructions/Instructions";
+import Endmodal from "../../components/endmodal/Endmodal";
 import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import Switch from "../../components/switch/Switch"
@@ -32,7 +34,7 @@ function Home(props) {
     return (
         <div className='home'>
             
-            <div ClassName = "test">
+            <div className = "test">
                 <button onClick = {toggle_theme}>Toggle Theme</button>
             </div>
 
@@ -64,6 +66,18 @@ function Home(props) {
                 <Playbutton  
                 icon = {<GiAlliedStar size={24}/>}
                 button_text="Play"/>
+            </div>
+
+            <div className="instructions">
+                <Instructions/>
+            </div>
+
+            <div className="how-to-play">
+                <button className="how-to-play-button"></button>
+            </div>
+
+            <div className="end">
+                <Endmodal/>
             </div>
         </div>)
 }
