@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import './board.css';
+import './Board.css';
 
 const initialState = {
   player1: 1,
