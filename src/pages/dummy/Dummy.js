@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import "./Dummy.css";
 import Table from "../../components/table/Table";
 import Board from "../../components/board/Board";
@@ -9,6 +9,15 @@ import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 
 function Dummy(props) {
+    const [flipped, setFlipped] = useState("flipped_true");
+    const flip_board = () => {
+        if (flipped === "flipped_false"){
+            setFlipped("flipped_true");
+        } else {
+            setFlipped("flipped_false");
+        }
+    }
+
     return (
         <div className='home'>
             <div className='game-info'>
@@ -27,7 +36,9 @@ function Dummy(props) {
             <div className='flip-button'>
                 <Playbutton 
                 icon={<CgArrowsVAlt size={24}/>} 
-                button_text="Flip"/>
+                button_text="Flip"
+                function = {flip_board}
+                />
             </div>
             <br/>
             <div className='play-button'>
@@ -38,6 +49,10 @@ function Dummy(props) {
 
             <div className="instructions">
                 <Instructions/>
+            </div>
+
+            <div className="how-to-play">
+                <button className="how-to-play-button"></button>
             </div>
 
             <div className="end">
