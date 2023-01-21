@@ -46,6 +46,7 @@ function Horizontal(matrix, player1win, player2win, winSet) {
   let count = 0;
   let player = 0;
   for (let r = 6; r >= 0; r--) {
+    count = 0;
     for (let c = 0; c < 7; c++) {
       if (matrix[r][c] === 0) {
         count = 0;
@@ -77,6 +78,7 @@ function Vertical(matrix, player1win, player2win, winSet) {
   let count = 0;
   let player = 0;
   for (let c = 0; c < 7; c++) {
+    count = 0;
     for (let r = 6; r >= 0; r--) {
       if (matrix[r][c] === 0) {
         count = 0;
@@ -166,7 +168,7 @@ function LeftDown(matrix, player1win, player2win, winSet) {
           matrix[r + 2][c - 2] === 2 &&
           matrix[r + 3][c - 3] === 2
         ) {
-          player1win += 2;
+          player2win += 2;
           for (let i = 0; i < 4; i++) {
             const r_idx = (r + i).toString();
             const c_idx = (c - i).toString();
@@ -272,6 +274,22 @@ function Home() {
   }
 
   // Check Winner
+  function glow(winSet) {
+    const winArray = Array.from(winSet);
+    for (let i = 0; i < winArray.length; i++) {
+      let r = parseInt(winArray[i][0]);
+      let c = parseInt(winArray[i][1]);
+      
+      console.log("hiiii before", r, c, cellMatrix[r][c])
+      
+    console.log(cellMatrix);
+      cellMatrix[r][c] += " circle-win";
+      console.log("hiiii", r, c, cellMatrix[r][c])
+    }
+    setCellMatrix({ ...cellMatrix });
+    console.log(cellMatrix);
+  }
+
   function checkWinner(matrix) {
     let playerwin = [0, 0, new Set()];
     playerwin = Horizontal(matrix, playerwin[0], playerwin[1], playerwin[2]);
@@ -281,6 +299,7 @@ function Home() {
 
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
       state.gameOver = true;
+      glow(playerwin[2]);
       if (playerwin[0] > playerwin[1]) {
         state.winner = "Red wins";
       } else if (playerwin[0] < playerwin[1]) {
@@ -288,12 +307,6 @@ function Home() {
       } else {
         state.winner = "Draw";
       }
-
-      for (let z=0; z<4; z++){
-        let row, col = arr[z];
-        cellMatrix[row][col] = "win" 
-      }
-      
 
       setState({ ...state });
       console.log(state.gameOver, state.winner);
