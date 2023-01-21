@@ -46,6 +46,7 @@ function Horizontal(matrix, player1win, player2win, winSet) {
   let count = 0;
   let player = 0;
   for (let r = 6; r >= 0; r--) {
+    count = 0;
     for (let c = 0; c < 7; c++) {
       if (matrix[r][c] === 0) {
         count = 0;
@@ -77,6 +78,7 @@ function Vertical(matrix, player1win, player2win, winSet) {
   let count = 0;
   let player = 0;
   for (let c = 0; c < 7; c++) {
+    count = 0;
     for (let r = 6; r >= 0; r--) {
       if (matrix[r][c] === 0) {
         count = 0;
