@@ -50,10 +50,10 @@ table {
     fill: var(--color-background-light);
 }
 
-.red-win {
-
+.circle-win {
+    filter: drop-shadow(0 0 1.25rem var(--color-win-glow));
 }
 
-.green-win {
-    
+.animated {
+    overflow: visible;
 }
