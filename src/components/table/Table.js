@@ -227,8 +227,29 @@ function Table() {
     checkWinner(state.board);
   }
 
+  function playHandlerFlipped(rowIndex, columnIndex) {
+    console.log("Table", rowIndex, columnIndex);
+
+    const column = state.board.map((x) => x[columnIndex]);
+    for (let i = 0; i < 7; i++) {
+      if (column[i] === 0) {
+        if (state.currentPlayerIs1) {
+          state.board[i][columnIndex] = 1;
+        } else {
+          state.board[i][columnIndex] = 2;
+        }
+        state.currentPlayerIs1 = !state.currentPlayerIs1;
+        setState({ ...state });
+        break;
+      }
+    }
+
+    console.log(state.board, state.currentPlayerIs1);
+    checkWinner(state.board);
+  }
+
   function RowMap(row, i) {
-    return <Row key={i} row={row} rowIndex={i} playHandler={playHandler} />;
+    return <Row key={i} row={row} rowIndex={i} playHandler={state.flipped? playHandlerFlipped : playHandler} />;
   }
 
   return (
