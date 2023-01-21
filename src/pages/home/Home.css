@@ -1,5 +1,13 @@
-.home {
+.home-dark {
     height: 100vh;
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+.home-light {
+    height: 100vh;
+    text-align: center;
+    background-color: var(--color-background-light);
 }
 
 .game-info-dark {

@@ -32,7 +32,7 @@ function Home(props) {
     useEffect(() => {document.body.className = theme;}, [theme]);
 
     return (
-        <div className='home'>
+        <div className={`home-${theme}`}>
             
             <div className = "test">
                 <button onClick = {toggle_theme}>Toggle Theme</button>
