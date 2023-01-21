@@ -30,6 +30,17 @@ const initialState = {
   winner: null,
   flipped: false,
 };
+
+const initialCellMatrix = [
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+  ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+];
+
 const GameContext = createContext();
 
 function Horizontal(matrix, player1win, player2win) {
@@ -148,17 +159,12 @@ function Full(matrix) {
   return full;
 }
 
-function Home(props) {
-  const [state, setState] = useState(initialState);
-  const [cellMatrix, setCellMatrix] = useState([
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-  ]);
+function Home() {
+  const [state, setState] = useState({ ...initialState });
+  const [cellMatrix, setCellMatrix] = useState({ ...initialCellMatrix });
+
+  // Flip token
+  const [flipped, setFlipped] = useState(false);
   function flipToken() {
     // flip state
     if (state.flipped) {
@@ -224,8 +230,6 @@ function Home(props) {
 
     setCellMatrix({ ...cellMatrix });
   }
-
-  const [flipped, setFlipped] = useState(false);
   const flip_board = () => {
     if (flipped === false) {
       setFlipped(true);
@@ -236,6 +240,7 @@ function Home(props) {
     const myTimeout = setTimeout(flipToken, 1000);
   };
 
+  // Check Winner
   function checkWinner(matrix) {
     let playerwin = [0, 0];
     playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
@@ -246,26 +251,26 @@ function Home(props) {
     if (playerwin[0] !== 0 || playerwin[1] !== 0) {
       if (playerwin[0] > playerwin[1]) {
         state.gameOver = true;
-        state.winner = 1;
+        state.winner = "Red Wins";
       } else if (playerwin[0] < playerwin[1]) {
         state.gameOver = true;
-        state.winner = 2;
+        state.winner = "Green Wins";
       } else {
         state.gameOver = true;
-        state.winner = 0;
+        state.winner = "Draw";
       }
       setState({ ...state });
       console.log(state.gameOver, state.winner);
     } else if (Full(matrix)) {
       state.gameOver = true;
-      state.winner = 0;
+      state.winner = "Draw";
       setState({ ...state });
     }
   }
 
+  // Play
   function playHandler(rowIndex, columnIndex) {
     console.log("Table", rowIndex, columnIndex, "State flipped", state.flipped);
-
 
     const column = state.board.map((x) => x[columnIndex]);
     if (state.flipped) {
@@ -303,8 +308,11 @@ function Home(props) {
       }
     }
     checkWinner(state.board);
+
+    console.log("Init", initialState.board);
   }
 
+  // Theme
   const [theme, setTheme] = useState("light");
   const toggle_theme = () => {
     if (theme === "light") {
@@ -317,9 +325,40 @@ function Home(props) {
     document.body.className = theme;
   }, [theme]);
 
+  // Reset
+  function reset() {
+    setState({
+      player1: 1,
+      player2: 2,
+      currentPlayerIs1: true,
+      board: [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+      ],
+      gameOver: false,
+      winner: null,
+      flipped: false,
+    });
+    setCellMatrix([
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+      ["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+    ]);
+    console.log("reset");
+  }
+
   return (
     <GameContext.Provider
-      value={[state, setState, cellMatrix, setCellMatrix, playHandler]}
+      value={[state, setState, cellMatrix, setCellMatrix, playHandler, reset]}
     >
       <div className={`home-${theme} home`}>
         <div className="darkmode-toggle">
@@ -332,7 +371,11 @@ function Home(props) {
         </div>
 
         <div className={`player-turn-${theme}`}>
-          <h4>{state.currentPlayerIs1 ? "Red's " : "Green's"} turn</h4>
+          {state.gameOver ? (
+            <h4>{state.winner}!</h4>
+          ) : (
+            <h4>{state.currentPlayerIs1 ? "Red's " : "Green's"} turn</h4>
+          )}
         </div>
 
         <div className={`flipped-${flipped}`}>
@@ -340,16 +383,21 @@ function Home(props) {
         </div>
 
         <div className="flip-button">
-          <Playbutton
-            icon={<CgArrowsVAlt size={24} />}
-            button_text="Flip"
-            function={flip_board}
+          {state.gameOver ? (
+            <Playbutton
+            icon={<GiAlliedStar size={24} />}
+            button_text="Play Again"
+            function={reset}
           />
+          ) : (
+            <Playbutton
+              icon={<CgArrowsVAlt size={24} />}
+              button_text="Flip"
+              function={flip_board}
+            />
+          )}
         </div>
         <br />
-        <div className="play-button">
-          <Playbutton icon={<GiAlliedStar size={24} />} button_text="Play" />
-        </div>
 
         <div className="instructions">
           <Instructions />
@@ -361,10 +409,6 @@ function Home(props) {
               <BsFillQuestionCircleFill size={24} />
             </span>
           </button>
-        </div>
-
-        <div className="end">
-          {state.gameOver ? <Endmodal /> : <div />}
         </div>
 
         <div className="astronaut astronaut-red">
