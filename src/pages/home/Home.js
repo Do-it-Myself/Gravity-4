@@ -7,7 +7,6 @@ import {CgArrowsVAlt} from "react-icons/cg";
 import {GiAlliedStar} from "react-icons/gi";
 import {BsFillQuestionCircleFill} from "react-icons/bs";
 import Switch from "../../components/switch/Switch"
-import "./Darkmode.css"
 import Board, {GameContext} from "../../components/board/Board";
 
 

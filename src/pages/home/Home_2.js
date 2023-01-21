@@ -6,7 +6,6 @@ import Endmodal from "../../components/endmodal/Endmodal";
 import { CgArrowsVAlt } from "react-icons/cg";
 import { GiAlliedStar } from "react-icons/gi";
 import Switch from "../../components/switch/Switch";
-import "./Darkmode.css";
 import Board from "../../components/board/Board_2";
 
 console.log("board 2");
