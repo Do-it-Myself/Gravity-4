@@ -23,6 +23,16 @@ code {
   --color-button-secondary: #EFB548;
   --color-font: #FFFFFF;
   --color-button-font: #000000;
+
+  --color-background-light: #F2F2F2;
+  --color-background-secondary-light: #C2C2C2;
+  --color-board-light: #4F4786;
+  --color-player-1-light: #F03737;
+  --color-player-2-light: #4ADE45;
+  --color-button-primary-light: #EFA00B;
+  --color-button-secondary-light: #EFB548;
+  --color-font-light: #000000;
+  --color-button-font-light: #000000;
 }
 
 table, tr, th {
