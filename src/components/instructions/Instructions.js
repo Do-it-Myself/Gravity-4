@@ -18,7 +18,7 @@ function Instructions(props) {
                         <div className='description'>
                             <ul>
                                 <li>Same as Connect 4, the objective is to connect 4 tokens either horizontally, vertically, or diagonally.</li>
-                                <li>But in Gravity 4, you can either place a token or flip the board for your turn.</li>
+                                <li>But in Gravity 4, you can choose to flip the board instead of placing a token for your turn.</li>
                                 <li>Enjoy the game and experience a whole new dimension!</li>
                             </ul>
                         </div>
