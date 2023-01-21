@@ -1,6 +1,7 @@
 import { React, useState, useContext } from "react";
 import { GameContext } from "../../pages/home/Home_2";
 import "./Board.css";
+import {ImCross} from 'react-icons/im';
 
 function Board() {
     const state = useContext(GameContext)[0];
@@ -29,6 +30,9 @@ function Board() {
                       className={`${cellMatrix[0][0]} ${cellMatrix[0][0]}-${theme}`}
                     />
                   </svg>
+                  <div className="win-cross">
+                    <ImCross size={20}/>
+                  </div>
                 </span>
               </td>
               <td

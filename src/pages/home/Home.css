@@ -36,13 +36,13 @@
 .player-turn-dark {
     color: var(--color-font);
     font-size: 2rem;
-    margin: 1.25rem 0 0 0;
+    margin: 2rem 0 0 0;
 }
 
 .player-turn-light {
     color: var(--color-font-light);
     font-size: 2rem;
-    margin: 1.25rem 0 0 0;
+    margin: 2rem 0 0 0;
 }
 
 .flipped-true{
@@ -80,35 +80,3 @@
     right: 30px;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(20px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-.astronaut {
-    animation: float 5s ease-in-out infinite;
-}
-
-.astronaut img {
-    height: 200px;
-    transform: rotate(-30deg);
-}
-
-.astronaut-red {
-    position: fixed;
-    bottom: 100px;
-    left: 100px;
-}
-
-.astronaut-green {
-    position: fixed;
-    top: 100px;
-    right: 100px;
-}

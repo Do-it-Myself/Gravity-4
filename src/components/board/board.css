@@ -19,6 +19,7 @@ table {
     height: 2rem;
     width: 2rem;
     border: 0;
+    z-index: 100;
 }
 
 .chip-position {
@@ -37,9 +38,14 @@ table {
 }
 
 .empty-dark {
-    fill: var(--color-background)
+    fill: var(--color-background);
 }
 
 .empty-light {
-    fill: var(--color-background-light)
+    fill: var(--color-background-light);
+}
+
+.animated {
+    top: 0;
+    left: 0;
 }
