@@ -72,13 +72,13 @@ function Vertical(matrix, player1win, player2win) {
 }
 
 function RightDown(matrix, player1win, player2win) {
-  let count = 0;
-  let player = 0;
   for (let r = 0; r < 7; r++) {
     for (let c = 0; c < 7; c++) {
-      if (r + 4 >= 7 || c + 4 >= 7) {
+      if (r + 4 > 7 || c + 4 > 7) {
+        console.log("Cell break:", r, c)
         break;
-      } else if (player === 1) {
+      } else if (matrix[r][c] === 1) {
+        console.log("Cell:", r, c)
         if (
           matrix[r + 1][c + 1] === 1 &&
           matrix[r + 2][c + 2] === 1 &&
@@ -86,23 +86,30 @@ function RightDown(matrix, player1win, player2win) {
         ) {
           player1win += 1;
         }
-      } else if (player === 1) {
+      } else if (matrix[r][c] === 2) {
         if (
-          matrix[r + 1][c + 1] === 1 &&
-          matrix[r + 2][c + 2] === 1 &&
-          matrix[r + 3][c + 3] === 1
+          matrix[r + 1][c + 1] === 2 &&
+          matrix[r + 2][c + 2] === 2 &&
+          matrix[r + 3][c + 3] === 2
         ) {
           player2win += 1;
         }
       }
     }
   }
+  console.log([player1win, player2win])
+  return [player1win, player2win];
+}
+
+function LeftDown(matrix, player1win, player2win) {
+  
 }
 
 function checkWinner(matrix) {
   let playerwin = [0, 0];
   playerwin = Horizontal(matrix, playerwin[0], playerwin[1]);
   playerwin = Vertical(matrix, playerwin[0], playerwin[1]);
+  playerwin = RightDown(matrix, playerwin[0], playerwin[1])
 
   if (playerwin[0] !== 0 || playerwin[1] !== 0) {
     if (playerwin[0] > playerwin[1]) {
@@ -121,6 +128,8 @@ function Table() {
   function playHandler(rowIndex, columnIndex) {
     console.log("Table", rowIndex, columnIndex);
 
+    state.board[rowIndex][columnIndex] = 1;
+    /*
     const column = state.board.map((x) => x[columnIndex]);
     for (let i = 6; i >= 0; i--) {
       if (column[i] === 0) {
@@ -136,6 +145,7 @@ function Table() {
         break;
       }
     }
+    */
 
     console.log(state.board, state.currentPlayerIs1);
     checkWinner(state.board);

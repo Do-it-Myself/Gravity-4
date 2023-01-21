@@ -33,23 +33,18 @@ function Board(props) {
 
     function playHandler(rowIndex, columnIndex) {
         console.log("Table", rowIndex, columnIndex);
-
-        const cellno = `cell${rowIndex}${columnIndex}`;
     
-        const newState = state;
-        let newCellMatrix = cellMatrix;
-        if (newState.currentPlayerIs1) {
-            newState.board[rowIndex][columnIndex] = 1;      
-            newCellMatrix[rowIndex][columnIndex] = "circle-red"
+        if (state.currentPlayerIs1) {
+            state.board[rowIndex][columnIndex] = 1;      
+            cellMatrix[rowIndex][columnIndex] = "circle-red"
         } else {
-            newState.board[rowIndex][columnIndex] = 2;
-            newCellMatrix[rowIndex][columnIndex] = "circle-green"
-            return () => setCellMatrix
+            state.board[rowIndex][columnIndex] = 2;
+            cellMatrix[rowIndex][columnIndex] = "circle-green"
         }
-        newState.currentPlayerIs1 = !state.currentPlayerIs1;
+        state.currentPlayerIs1 = !state.currentPlayerIs1;
     
-        setState({...newState});
-        setCellMatrix({...newCellMatrix});
+        setState({...state});
+        setCellMatrix({...cellMatrix});
         console.log("matrix", cellMatrix);
     }
 
