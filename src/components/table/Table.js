@@ -16,6 +16,7 @@ const initialState = {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
   ],
+  flipped: false,
   gameOver: false,
   winner: null,
 };
@@ -152,7 +153,56 @@ function Table() {
         state.winner = 0;
       }
       setState({ ...state });
-      console.log(state.gameOver, state.winner)
+      console.log(state.gameOver, state.winner);
+    }
+  }
+
+  function flip() {
+    for (let c = 0; c < 7; c++) {
+      const column = state.board.map((x) => x[c]);
+      let lastFilled = 7;
+      for (let r = 0; r < 7; r++) {
+        if (column[r] !== 0) {
+          lastFilled = r;
+          break;
+        }
+      }
+      if (lastFilled !== 7) {
+        let newColumn = [0, 0, 0, 0, 0, 0, 0];
+        for (let r = 0; r < 7 - lastFilled; r++) {
+          newColumn[r] = column[r + lastFilled];
+        }
+        for (let r = 0; r < 7; r++) {
+          state.board[r][c] = newColumn[r];
+        }
+      }
+    }
+    state.flipped = true;
+    setState({ ...state });
+  }
+
+  function unflip() {
+    for (let c = 0; c < 7; c++) {
+      const column = state.board.map((x) => x[c]);
+      let lastFilled = -1;
+      for (let r = 6; r >= 0; r--) {
+        if (column[r] != 0) {
+          lastFilled = r;
+          break;
+        }
+      }
+      if (lastFilled !== -1) {
+        let newColumn = [0, 0, 0, 0, 0, 0, 0];
+        const shift = 6 - lastFilled;
+        for (let r = 6; r >= shift; r--) {
+          newColumn[r] = column[r - shift];
+        }
+        for (let r = 0; r < 7; r++) {
+          state.board[r][c] = newColumn[r];
+        }
+      }
+      state.flipped = false;
+      setState({ ...state });
     }
   }
 
@@ -169,7 +219,6 @@ function Table() {
         }
         state.currentPlayerIs1 = !state.currentPlayerIs1;
         setState({ ...state });
-
         break;
       }
     }
@@ -187,6 +236,7 @@ function Table() {
       <table>
         <tbody>{state.board.map(RowMap)}</tbody>
       </table>
+      <button onClick={state.flipped? unflip : flip}>Flip</button>
     </GameContext.Provider>
   );
 }
